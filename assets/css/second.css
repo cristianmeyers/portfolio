@@ -47,3 +47,23 @@ form button:hover {
   margin: 20px 20px;
   border-bottom: none;
 }
+
+/* =========================================================  BTS =======================*/
+.specialties {
+  display: flex; /* Utiliza el modelo flexbox para alinear los elementos horizontalmente */
+  justify-content: space-around; /* Espacio entre los elementos */
+  margin-top: 20px; /* Espacio arriba de las especialidades */
+}
+
+.specialty {
+  width: 45%; /* Ancho de cada especialidad para alinearlas lado a lado */
+  text-align: center; /* Centre le texte et l'image */
+}
+
+.specialty img {
+  width: 100%; /* Hace que la imagen ocupe el 100% del ancho de su contenedor */
+  height: 200px; /* Définit une hauteur fixe pour toutes les images */
+  object-fit: cover; /* Rognage de l'image pour conserver les proportions */
+  display: block; /* Asegura que no haya espacio debajo de la imagen */
+  margin-bottom: 20px;
+}
