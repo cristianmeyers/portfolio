@@ -67,3 +67,9 @@ form button:hover {
   display: block; /* Asegura que no haya espacio debajo de la imagen */
   margin-bottom: 20px;
 }
+
+/*===============================================   image logo  ==============================*/
+
+.image__logo {
+  border-radius: 50%;
+}
