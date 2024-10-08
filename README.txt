@@ -1,31 +1,32 @@
-Stellar by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+# Portfolio - Cristian Meyers
 
+Bienvenue sur mon portfolio ! Ce projet a été conçu pour présenter mes compétences, mon parcours et mes réalisations dans le domaine de l'informatique et plus particulièrement dans le cadre de mon BTS SIO (Services Informatiques aux Organisations), spécialité SISR.
 
-Say hello to Stellar, a slick little one-pager with a super vibrant color palette (which
-I guess you can always tone down if it's a little too vibrant for you), a "sticky" in-page
-nav bar (powered by my Scrollex plugin), a separate generic page template (just in case
-you need one), and an assortment of pre-styled elements.
+## Table des matières
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+- [Aperçu](#aperçu)
+- [Fonctionnalités](#fonctionnalités)
+- [Installation](#installation)
+- [Technologies utilisées](#technologies-utilisées)
+- [Projets inclus](#projets-inclus)
+- [Contact](#contact)
 
-(* = not included)
+## Aperçu
 
-AJ
-aj@lkn.io | @ajlkn
+Ce portfolio est une vitrine de mes compétences et de mes projets dans le domaine de l'informatique, avec un accent particulier sur le développement web, l'administration des systèmes et des réseaux, et la cybersécurité. Le site a été conçu pour être responsive et s'adapte à tous les types d'écrans.
 
+## Fonctionnalités
 
-Credits:
+- Présentation de mon parcours professionnel et académique.
+- Liste des compétences en développement web, administration systèmes et réseaux, et cybersécurité.
+- Section de projets réalisés avec des descriptions détaillées.
+- Formulaire de contact.
+- Intégration de mes réseaux sociaux (GitHub, LinkedIn).
 
-	Demo Images:
-		Unsplash (unsplash.com)
+## Installation
 
-	Icons:
-		Font Awesome (fontawesome.io)
+1. **Cloner le dépôt** :
 
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+   ```bash
+   git clone https://github.com/cristianmeyers/portfolio2.git
+
