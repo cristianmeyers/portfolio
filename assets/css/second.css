@@ -4,45 +4,15 @@ strong {
   color: #ffffff;
   /* Cambia el color si es necesario */
 }
-
 form .form-group {
   margin-bottom: 20px;
   /* Añade un espacio de 20px entre cada campo */
 }
 
-form input,
-form textarea {
-  width: 100%;
-  /* Para que los campos ocupen todo el ancho disponible */
-  padding: 10px;
-  /* Espacio interno dentro de los campos */
-  border-radius: 5px;
-  /* Bordes redondeados para mejor apariencia */
-  border: 1px solid #ccc;
-  /* Añade un borde sutil */
-}
-
-form textarea {
-  height: 150px;
-  /* Ajusta la altura del área de texto */
-}
-
-form button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-form button:hover {
-  background-color: #0056b3;
-}
 /* =========================================================  Icon style intro  ==========================*/
 
-.fa-github,
-.fa-linkedin {
+header .fa-github,
+header .fa-linkedin {
   font-size: 50px;
   margin: 20px 20px;
   border-bottom: none;
@@ -125,3 +95,17 @@ form button:hover {
   width: 100%;
   border-radius: 10px; /* Ajoute des coins arrondis */
 }
+
+/* ==================================  particles section  =========================*/
+#particles-js {
+  position: fixed; /* Fijo para que ocupe toda la pantalla */
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  top: 0; /* Comienza desde la parte superior */
+  left: 0; /* Comienza desde la izquierda */
+  z-index: -1; /* Detrás del contenido */
+  pointer-events: none; /* Para que no interfiera con el clic en otros elementos */
+}
+
+/*======================================== footer ==================================*/
+/* Estilo para el footer */
