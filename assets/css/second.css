@@ -80,6 +80,7 @@ form button:hover {
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 
 .project-card {
