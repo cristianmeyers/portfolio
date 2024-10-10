@@ -12,7 +12,8 @@ form .form-group {
 /* =========================================================  Icon style intro  ==========================*/
 
 header .fa-github,
-header .fa-linkedin {
+header .fa-linkedin,
+header .fa-download {
   font-size: 50px;
   margin: 20px 20px;
   border-bottom: none;
