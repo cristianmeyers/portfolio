@@ -5,6 +5,12 @@
     display: none;
   }
 }
+p {
+  margin: 0;
+}
+.intro {
+  margin-bottom: 2vh;
+}
 
 /* =========================================================  form for intro  ==========================*/
 strong {
