@@ -20,12 +20,8 @@ form .form-group {
 /* =========================================================  Icon style intro  ==========================*/
 
 header .fa-github,
-<<<<<<< HEAD
-header .fa-linkedin {
-=======
 header .fa-linkedin,
 header .fa-download {
->>>>>>> main
   font-size: 50px;
   margin: 20px 20px;
   border-bottom: none;
@@ -124,10 +120,6 @@ header .fa-download {
   pointer-events: none; /* Para que no interfiera con el clic en otros elementos */
 }
 
-<<<<<<< HEAD
-/*======================================== footer ==================================*/
-/* Estilo para el footer */
-=======
 /*======================================== Veille Technologique Section ==================================*/
 /* veille */
 .veille-wrapper {
@@ -170,4 +162,3 @@ img {
   height: auto; /* Mantiene la proporción de la imagen */
   border-radius: 10px;
 }
->>>>>>> main
