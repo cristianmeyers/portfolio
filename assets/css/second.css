@@ -1,3 +1,11 @@
+/*==========================================================  intro =====================================*/
+
+@media screen and (max-width: 980px) {
+  .spotlight .image {
+    display: none;
+  }
+}
+
 /* =========================================================  form for intro  ==========================*/
 strong {
   font-weight: bold;
@@ -12,7 +20,12 @@ form .form-group {
 /* =========================================================  Icon style intro  ==========================*/
 
 header .fa-github,
+<<<<<<< HEAD
 header .fa-linkedin {
+=======
+header .fa-linkedin,
+header .fa-download {
+>>>>>>> main
   font-size: 50px;
   margin: 20px 20px;
   border-bottom: none;
@@ -20,22 +33,26 @@ header .fa-linkedin {
 
 /* =========================================================  BTS =======================*/
 .specialties {
-  display: flex; /* Utiliza el modelo flexbox para alinear los elementos horizontalmente */
-  justify-content: space-around; /* Espacio entre los elementos */
-  margin-top: 20px; /* Espacio arriba de las especialidades */
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Diseño adaptable */
+  gap: 4vw; /* Espacio entre las especialidades */
+  margin-top: 20px;
 }
 
 .specialty {
-  width: 45%; /* Ancho de cada especialidad para alinearlas lado a lado */
-  text-align: center; /* Centre le texte et l'image */
+  text-align: center; /* Centra el texto y la imagen */
 }
 
 .specialty img {
-  width: 100%; /* Hace que la imagen ocupe el 100% del ancho de su contenedor */
-  height: 200px; /* Définit une hauteur fixe pour toutes les images */
+  width: 100%; /* La imagen ocupará el ancho completo de su contenedor */
+  height: 200px; /* Altura fija para todas las imágenes */
   object-fit: cover; /* Rognage de l'image pour conserver les proportions */
-  display: block; /* Asegura que no haya espacio debajo de la imagen */
   margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 /*===============================================   image logo  ==============================*/
@@ -107,5 +124,50 @@ header .fa-linkedin {
   pointer-events: none; /* Para que no interfiera con el clic en otros elementos */
 }
 
+<<<<<<< HEAD
 /*======================================== footer ==================================*/
 /* Estilo para el footer */
+=======
+/*======================================== Veille Technologique Section ==================================*/
+/* veille */
+.veille-wrapper {
+  display: flex;
+  flex-direction: column; /* Coloca cada .veille en una columna */
+  margin-top: 10vh;
+  gap: 10vh; /* Espacio entre las secciones */
+}
+
+.veille {
+  display: flex; /* Usa Flexbox para organizar la imagen y el texto */
+  align-items: center; /* Centra verticalmente el contenido */
+  flex-wrap: wrap; /* Permite que el contenido se envuelva en filas cuando no hay suficiente espacio */
+}
+
+.veille-wrapper .veille:nth-child(even) {
+  flex-direction: row-reverse; /* Para alternar la posición de la imagen y el texto en secciones impares */
+}
+
+.img {
+  flex: 1 1 50%; /* La imagen ocupa el 50% del ancho disponible, pero puede reducirse */
+  min-width: 300px; /* Ancho mínimo de la imagen para evitar que sea demasiado pequeña */
+  max-width: 600px;
+}
+
+.veille--text1,
+.veille--text2,
+.veille--text3,
+.veille--text4 {
+  flex: 1 1 20%; /* El texto ocupa el 60% del ancho, pero se puede reducir */
+  min-width: 300px; /* Ancho mínimo del texto para evitar que colapse demasiado */
+  padding: 20px; /* Espaciado interno del texto */
+  color: #333; /* Color del texto */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+img {
+  max-width: 100%; /* Hace que la imagen sea responsiva */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 10px;
+}
+>>>>>>> main
