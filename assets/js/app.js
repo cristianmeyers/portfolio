@@ -1,3 +1,19 @@
+// ========================= Map
+// Créer le carte centré sur Brest
+var map = L.map("map").setView([48.390394, -4.486081], 13); // Coordonnées de Brest
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+// Ajouter un marqueur à Brest
+L.marker([48.390394, -4.486081])
+  .addTo(map)
+  .bindPopup("J'habite ici!")
+  .openPopup();
+
+// ============================================================ particles
 particlesJS("particles-js", {
   particles: {
     number: {

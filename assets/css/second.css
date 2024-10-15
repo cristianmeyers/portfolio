@@ -162,3 +162,11 @@ img {
   height: auto; /* Mantiene la proporción de la imagen */
   border-radius: 10px;
 }
+/*======================================== Footer Section ==================================*/
+/* Map api */
+#map {
+  height: 280px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 3vh;
+}
