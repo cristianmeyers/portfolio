@@ -170,3 +170,8 @@ img {
   border-radius: 10px;
   margin-bottom: 3vh;
 }
+
+#footer {
+  margin: 0;
+  width: 100%;
+}
