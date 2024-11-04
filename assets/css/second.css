@@ -46,15 +46,11 @@ header .fa-download {
 
 .specialty {
   text-align: center; /* Centra el texto y la imagen */
-}
-
-.specialty img {
-  width: 100%; /* La imagen ocupará el ancho completo de su contenedor */
-  height: 200px; /* Altura fija para todas las imágenes */
-  object-fit: cover; /* Rognage de l'image pour conserver les proportions */
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  div {
+    margin-bottom: 20px;
+    height: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /*===============================================   image logo  ==============================*/
@@ -100,21 +96,45 @@ header .fa-download {
 .project-card p {
   color: #666;
 }
-.project-card img {
-  width: 100%;
-  height: auto;
+
+/*====================== card ============================*/
+.card {
   border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère */
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-.project-image {
-  max-height: 200px; /* Ajuste la hauteur maximale des images */
+.card-image {
+  height: 100%; /* Ajuste la hauteur maximale des images */
   object-fit: cover; /* Pour rogner l'image si nécessaire */
   width: 100%;
-  border-radius: 10px; /* Ajoute des coins arrondis */
+  display: block;
+  z-index: 1;
+  transition: transform 0.8s ease;
+  transform-origin: center; /* Asegura que la transformación se centre en la imagen */
 }
-
+.card-image:hover {
+  transform: scale(1.1); /* Aumentar la escala al 110% al pasar el ratón */
+}
+.card-shadow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    360deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 63%
+  );
+  pointer-events: none;
+}
 /* ==================================  particles section  =========================*/
 #particles-js {
   position: fixed; /* Fijo para que ocupe toda la pantalla */
@@ -149,6 +169,10 @@ header .fa-download {
   flex: 1 1 50%; /* La imagen ocupa el 50% del ancho disponible, pero puede reducirse */
   min-width: 300px; /* Ancho mínimo de la imagen para evitar que sea demasiado pequeña */
   max-width: 600px;
+  height: auto;
+  img {
+    max-width: 100%; /* Hace que la imagen sea responsiva */
+  }
 }
 
 .veille--text1,
@@ -163,11 +187,6 @@ header .fa-download {
   border-radius: 5px; /* Bordes redondeados */
 }
 
-img {
-  max-width: 100%; /* Hace que la imagen sea responsiva */
-  height: auto; /* Mantiene la proporción de la imagen */
-  border-radius: 10px;
-}
 /*======================================== Footer Section ==================================*/
 /* Map api */
 #map {
