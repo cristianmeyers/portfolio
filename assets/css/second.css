@@ -13,10 +13,8 @@ p {
 }
 
 /* =========================================================  form for intro  ==========================*/
-strong {
+.highlight {
   font-weight: bold;
-  color: #ffffff;
-  /* Cambia el color si es necesario */
 }
 form .form-group {
   margin-bottom: 20px;
@@ -208,4 +206,15 @@ header .fa-download {
 /* a todos los hijos directos del elemento, menos los mas profundos, nietos... */
 #footer > * {
   margin-left: 0; /* quitar margen izquierdo y remmplazarlo por justify-content */
+}
+
+/* =========================                       generic section                      ========================================= */
+
+.main > .card {
+  height: 500px;
+}
+
+.main > p {
+  font-size: 25px;
+  margin: 3vh 0;
 }
