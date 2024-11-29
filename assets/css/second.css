@@ -94,6 +94,17 @@ header .fa-download {
 .project-card p {
   color: #666;
 }
+.button {
+  font-weight: bold;
+}
+
+.primary {
+  background-color: #29a2ef !important;
+  transition: background-color ease 1s;
+}
+.primary:hover {
+  background-color: #5dc1ff !important;
+}
 
 /*====================== card ============================*/
 .card {
