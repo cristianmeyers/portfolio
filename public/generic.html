@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <!-- V2 -->
 
 <head>
-	<title>Generic - Stellar by HTML5 UP</title>
+	<title>À Propos - Cristian MEYERS</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../assets/css/main.css" />
-	<!-- css -->
+	<link rel="stylesheet" href="../assets/css/all.css">
 	<link rel="stylesheet" href="../assets/css/second.css">
+
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/webfonts/favicon_io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/webfonts/favicon_io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/webfonts/favicon_io/favicon-16x16.png">
+	<link rel="manifest" href="/assets/webfonts/favicon_io/site.webmanifest">
+
 	<noscript>
 		<link rel="stylesheet" href="../assets/css/noscript.css" />
 	</noscript>
@@ -20,79 +27,125 @@
 		<!-- Header -->
 		<header id="header">
 			<h1>Cristian MEYERS</h1>
-			<p>Alternant informatique</p>
+			<p>Développeur et Technicien Informatique en Alternance</p>
+			<a href="/" title="Accueil">
+				<i class="fa-solid fa-house"></i>
+			</a>
 		</header>
 
 		<!-- Main -->
 		<div id="main">
 			<!-- Content -->
 			<section id="content" class="main">
+				<!-- Hero Image -->
 				<div class="card card-shadow image main">
-					<img src="../images/software.jpg" alt="" class="card-image" />
+					<img src="../images/software.jpg" alt="Software Development" class="card-image" />
 				</div>
-				<h2 class="highlight">Mon Parcours</h2>
 
+				<!-- Mon Parcours -->
+				<h2 class="highlight">Mon Parcours</h2>
 				<p>
 					Je m’appelle <span class="highlight">Cristian MEYERS</span>, passionné par
-					l’informatique, avec un parcours académique et professionnel qui m'a
-					permis d'acquérir une solide expérience dans plusieurs domaines
-					techniques.
+					l’informatique, avec un parcours académique et professionnel qui m'a permis d'acquérir une solide
+					expérience dans plusieurs domaines techniques.
 				</p>
 
+				<!-- Langages de Programmation -->
+				<h3 class="highlight">Langages Maîtrisés</h3>
+				<div id="langs">
+					<div class="carousel">
+						<div class="carousel-track">
+							<!-- Cards originales -->
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/html.png" alt="HTML">
+								<h3>HTML</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/css.png" alt="CSS">
+								<h3>CSS</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/python.png" alt="Python">
+								<h3>Python</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/js.png" alt="JavaScript">
+								<h3>JavaScript</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/c.png" alt="C">
+								<h3>C</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/node-js.png" alt="NodeJS">
+								<h3>Node JS</h3>
+							</div>
+
+							<!-- Duplicado para bucle infinito -->
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/html.png" alt="HTML">
+								<h3>HTML</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/css.png" alt="CSS">
+								<h3>CSS</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/python.png" alt="Python">
+								<h3>Python</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/js.png" alt="JavaScript">
+								<h3>JavaScript</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/c.png" alt="C">
+								<h3>C</h3>
+							</div>
+							<div class="c_card">
+								<img src="../assets/webfonts/flaticons/node-js.png" alt="NodeJS">
+								<h3>Node JS</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Expérience Académique -->
+				<h3 class="highlight">Expérience Académique</h3>
 				<p>
-					A l’issue de l’obtention de mon <span class="highlight">Baccalauréat Technologique</span>, j’ai
-					suivi une première année en <span class="highlight">Licence Informatique ISI</span> (informatique et
-					sciences pour ingénieurs) où j’ai acquis de l’expérience dans des domaines variés tels que la
-					programmation en <span class="highlight">langage C</span>, le <span class="highlight">développement
-						web</span> (CSS, HTML, JavaScript), le <span class="highlight">Scripting Bash sous Linux</span>
-					et la <span class="highlight">maintenance du parc informatique</span>, me permettant d’obtenir ma
-					certification <span class="highlight">PIX</span> durant mon parcours universitaire.
+					Après avoir obtenu mon <span class="highlight">Baccalauréat Technologique</span>, j’ai suivi une
+					première année en <span class="highlight">Licence Informatique ISI</span> (informatique et sciences
+					pour ingénieurs). J’y ai acquis des compétences variées, notamment en programmation (<span
+						class="highlight">langage C</span>), développement web (<span class="highlight">CSS, HTML,
+						JavaScript</span>), scripting sous Linux (<span class="highlight">Bash</span>) et maintenance du
+					parc informatique. J'ai également obtenu ma certification <span class="highlight">PIX</span>.
 				</p>
 
+				<!-- Gallery -->
+				<div id="projects" class="projects">
+					<!-- Galería de Proyectos -->
+					<h3 class="highlight">Mes Projets GitHub</h3>
+					<div id="github-gallery" class="gallery"></div>
+
+					<!-- Botón para Expandir -->
+					<button id="load-more" class="button primary">Charger Plus de Projets</button>
+				</div>
+
+				<!-- Objectifs Professionnels -->
+				<h3 class="highlight">Objectifs Professionnels</h3>
 				<p>
-					J’ai aussi appliqué ces connaissances lors de mon projet académique, où j’ai conçu un <span
-						class="highlight">logiciel de contrôle pour une grue securitax</span> en utilisant le langage
-					<span class="highlight">RobotC</span>, tout en respectant les normes de sécurité et un cahier des
-					charges strict.
+					Mon objectif est de développer davantage mes compétences en <span
+						class="highlight">conception</span>,
+					<span class="highlight">sécurisation</span> et <span class="highlight">déploiement
+						d'applications</span>
+					et de <span class="highlight">sites web</span>. Je souhaite suivre la voie de <span
+						class="highlight">pentesteur</span> et <span class="highlight">développeur full-stack</span>.
+					Mon
+					intérêt marqué pour la <span class="highlight">cybersécurité</span> et le <span
+						class="highlight">développement web</span> me motive à relever de nouveaux défis pour apporter
+					des
+					solutions innovantes et sécurisées dans le domaine de l’informatique.
 				</p>
-
-				<p>
-					Suite à une réorientation en guise d’un parcours me permettant d’appliquer mes connaissances
-					académiques sur le milieu professionnel, je suis en cours de validation de mon <span
-						class="highlight">BTS Services Informatiques aux Organisations (SIO)</span> avec une
-					spécialisation en <span class="highlight">Solutions d'Infrastructures Systèmes et Réseaux
-						(SISR)</span>, où je renforce mes compétences en technologies de l’information tout en
-					poursuivant mon apprentissage pratique au sein de <span class="highlight">L’IUT de Brest</span>, où
-					je travaille comme <span class="highlight">technicien informatique réseau et helpdesk</span> en
-					alternance.
-				</p>
-
-				<p>
-					Actuellement, j’ai comme projet de concevoir un <span class="highlight">environnement
-						sécurisé</span> et propice à l’apprentissage de la <span class="highlight">cybersécurité</span>
-					en respectant le cadre légal. Cela me permettra d’obtenir de l’expérience en <span
-						class="highlight">pentesting</span>, ainsi que de maîtriser les aspects fondamentaux de la <span
-						class="highlight">cyber défense</span>.
-				</p>
-
-				<p>
-					Je possède aussi des projets personnels, tels que le développement d’une <span
-						class="highlight">calculatrice scientifique</span> inspirée de l'interface utilisateur de la
-					<span class="highlight">calculatrice Google</span>, un défi qui me permet d’améliorer mes
-					compétences en <span class="highlight">JavaScript</span>.
-				</p>
-
-				<p>
-					Mes objectifs sont de développer davantage mes compétences en <span
-						class="highlight">conception</span>, <span class="highlight">sécurisation</span> et <span
-						class="highlight">déploiement d'applications</span> et de <span class="highlight">sites
-						web</span>, en suivant la voie de <span class="highlight">pentesteur</span> et <span
-						class="highlight">développeur full-stack</span>. Mon intérêt marqué pour la <span
-						class="highlight">cybersécurité</span> et le <span class="highlight">développement web</span> me
-					motive à toujours relever de nouveaux défis pour apporter des solutions innovantes et sécurisées
-					dans le domaine de l’informatique.
-				</p>
-
 			</section>
 		</div>
 
@@ -102,8 +155,8 @@
 				<h2>Coordonnées</h2>
 				<div id="map"></div>
 				<p>N'hésitez pas à explorer mes projets ci-dessus et à me contacter pour toute collaboration ou
-					opportunité.</p>
-
+					opportunité.
+				</p>
 			</section>
 
 			<section>
@@ -129,7 +182,7 @@
 				<ul class="icons">
 					<li>
 						<a href="#" class="icon brands fa-linkedin alt" target="_blank">
-							<span class="label">Link</span>
+							<span class="label">LinkedIn</span>
 						</a>
 					</li>
 					<li>
@@ -155,21 +208,14 @@
 						</a>
 					</li>
 				</ul>
-
 			</section>
 
 			<p class="copyright">
-				&copy; All rights reserved. Design: <a href="https://github.com/cristianmeyers" target="_blank">Cristian
-					Meyers</a>.
+				&copy; Tous droits réservés. Design: <a href="https://github.com/cristianmeyers"
+					target="_blank">Cristian Meyers</a>.
 			</p>
 		</footer>
 	</div>
-
-	<!-- Cargar la librería de Leaflet para mapas -->
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-	<script src="../assets/js/app.js"></script>
-
 
 	<!-- Scripts -->
 	<script src="../assets/js/jquery.min.js"></script>
@@ -179,6 +225,12 @@
 	<script src="../assets/js/breakpoints.min.js"></script>
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
+	<script src="../assets/js/gallery.js"></script>
+
+	<!-- Map -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+	<script src="../assets/js/app.js"></script>
 </body>
 
 </html>
