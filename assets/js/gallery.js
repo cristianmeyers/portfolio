@@ -1,5 +1,3 @@
-// gallery.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const gallery = document.getElementById("github-gallery");
   const loadMoreButton = document.getElementById("load-more");
@@ -22,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Error al cargar los proyectos desde GitHub");
       }
       allRepos = await response.json();
+
+      // Filtrar repositorios para excluir los que tienen el tema "hidden"
+      allRepos = allRepos.filter((repo) => !repo.topics.includes("hidden"));
 
       // Mostrar los últimos 6 proyectos inicialmente
       displayedRepos = allRepos.slice(0, 6);
