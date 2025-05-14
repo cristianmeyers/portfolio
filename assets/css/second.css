@@ -1,6 +1,7 @@
 /* ============================= Variables Globales ============================= */
 :root {
   --primary-color: #29a2ef;
+  --secondary-color: #d1d1d1;
   --hover-color: #12c52a;
   --text-color: #333;
   --secondary-text-color: #666;
@@ -11,6 +12,24 @@
   --gradient-end: rgba(0, 0, 0, 0);
   --footer-bg: rgba(255, 255, 255, 0.8);
   --icon-color: #007bff;
+}
+
+/* =============================  General rules  ============================= */
+html {
+  *::-webkit-scrollbar,
+  ::-webkit-scrollbar-track-piece,
+  *::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner,
+  *::-webkit-scrollbar:horizontal,
+  *::-webkit-scrollbar-button {
+    background-color: transparent;
+    color: transparent;
+    display: none;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+  }
 }
 
 /* ===========================================================  Intro ===================================== */
