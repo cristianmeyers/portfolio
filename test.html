@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Cristian Meyers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Hero -->
+    <header
+        class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+        <h1 class="text-5xl font-bold mb-4">Cristian Meyers</h1>
+        <p class="text-xl mb-6">Technicien informatique en alternance</p>
+        <a href="#projects"
+            class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-full shadow hover:bg-gray-200 transition">
+            Voir mes projets
+        </a>
+    </header>
+
+    <!-- Navbar sticky -->
+    <nav class="sticky top-0 bg-white shadow z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-center space-x-8 font-medium">
+            <a href="#about" class="hover:text-blue-600">Accueil</a>
+            <a href="#bts" class="hover:text-blue-600">BTS SIO</a>
+            <a href="#skills" class="hover:text-blue-600">Compétences</a>
+            <a href="#projects" class="hover:text-blue-600">Projets</a>
+            <a href="#veille" class="hover:text-blue-600">Veille</a>
+            <a href="#contact" class="hover:text-blue-600">Contact</a>
+        </div>
+    </nav>
+
+    <!-- À propos -->
+    <section id="about" class="py-20 max-w-5xl mx-auto px-6 bg-white">
+        <h2 class="text-3xl font-bold text-center mb-10">À propos de moi</h2>
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <img src="images/cristian.jpeg" alt="Photo de profil" class="rounded-full shadow-lg w-48 h-48 object-cover">
+            <p class="text-lg text-gray-700">
+                Je suis étudiant en BTS SIO SISR, passionné par la cybersécurité et le développement informatique.
+                J'aime créer des solutions pratiques et apprendre de nouveaux outils.
+                Mon objectif est d'améliorer la sécurité des systèmes d'information et développer des outils
+                pratiques en cybersécurité.
+            </p>
+        </div>
+    </section>
+
+    <!-- Compétences générales -->
+    <section id="skills" class="py-20 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-10">Compétences Techniques</h2>
+        <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+            <span class="px-4 py-2 bg-white shadow rounded-full">HTML5</span>
+            <span class="px-4 py-2 bg-white shadow rounded-full">CSS3</span>
+            <span class="px-4 py-2 bg-white shadow rounded-full">JavaScript</span>
+            <span class="px-4 py-2 bg-white shadow rounded-full">Python</span>
+            <span class="px-4 py-2 bg-white shadow rounded-full">SQL</span>
+            <span class="px-4 py-2 bg-white shadow rounded-full">Linux</span>
+            <span class="px-4 py-2 bg-white shadow rounded-full">Git/GitHub</span>
+        </div>
+    </section>
+
+    <!-- Compétences détaillées -->
+    <section class="py-20 bg-white">
+        <h2 class="text-3xl font-bold text-center mb-10">Mes Compétences</h2>
+        <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
+            <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                <i class="fa-solid fa-code text-4xl text-blue-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Développement Web</h3>
+                <p>Création de sites web dynamiques et responsives avec HTML, CSS et JavaScript.</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                <i class="fa-solid fa-network-wired text-4xl text-green-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Administration Systèmes & Réseaux</h3>
+                <p>Installation, configuration et maintenance de systèmes Windows et Linux.</p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                <i class="fa-solid fa-shield-halved text-4xl text-red-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Cybersécurité</h3>
+                <p>Connaissance des principes de sécurité et prévention des cybermenaces.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BTS SIO -->
+    <section id="bts" class="py-20 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-10">Mon BTS SIO</h2>
+        <div class="max-w-6xl mx-auto px-6 bg-white p-6 rounded-xl shadow">
+            <h3 class="text-2xl font-semibold mb-4">Présentation du BTS SIO</h3>
+            <p class="mb-4">
+                Le BTS Services Informatiques aux Organisations (SIO) est une formation de deux ans qui prépare
+                les étudiants aux métiers de l'informatique. Il offre deux spécialisations : SLAM et SISR.
+            </p>
+
+            <h3 class="text-2xl font-semibold mb-4">Mes Compétences Acquises</h3>
+            <p class="mb-4">
+                Programmation (Python, C), administration de systèmes et réseaux (Windows Server, Linux), gestion de
+                bases de données (SQL), développement web (HTML, CSS, JavaScript) et cybersécurité.
+            </p>
+
+            <h3 class="text-2xl font-semibold mb-4">Expériences Pratiques</h3>
+            <p>
+                Stages en entreprise : création de sites web et configuration de réseaux locaux sécurisés.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projects" class="py-20 bg-white">
+        <h2 class="text-3xl font-bold text-center mb-10">Projets</h2>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+            <div class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
+                <img src="images/tech.jpg" alt="Projet 1" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Bot transcription vidéos</h3>
+                    <p class="text-gray-600 mb-4">Bot Telegram de transcription vidéo à texte avec Whisper d'OpenAI</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                </div>
+            </div>
+            <div class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
+                <img src="images/ai cyber.png" alt="Projet 2" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Cybersalle</h3>
+                    <p class="text-gray-600 mb-4">Salle dédiée à la cybersécurité, équipée pour la formation pratique.
+                    </p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                </div>
+            </div>
+            <div class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
+                <img src="images/dev.jpg" alt="Projet 3" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Audit de sécurité</h3>
+                    <p class="text-gray-600 mb-4">Tests de vulnérabilité et mise en place de politiques de sécurité.</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <h2 class="text-3xl font-bold text-center mb-10">Contact</h2>
+        <div class="text-center">
+            <p class="mb-4">📧 <a href="mailto:tonemail@example.com"
+                    class="text-blue-600 hover:underline">tonemail@example.com</a></p>
+            <p class="mb-4">💼 <a href="#" class="text-blue-600 hover:underline">LinkedIn</a></p>
+            <p>🐙 <a href="#" class="text-blue-600 hover:underline">GitHub</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center bg-gray-800 text-gray-300">
+        © 2025 Cristian Meyers - BTS SIO
+    </footer>
+
+</body>
+
+</html>
