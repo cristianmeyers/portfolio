@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Cristian Meyers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white shadow z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-blue-600">Cristian Meyers</h1>
+            <ul class="flex space-x-6 font-medium">
+                <li><a href="#about" class="hover:text-blue-600">Accueil</a></li>
+                <li><a href="#bts" class="hover:text-blue-600">BTS SIO</a></li>
+                <li><a href="#skills" class="hover:text-blue-600">Compétences</a></li>
+                <li><a href="#projects" class="hover:text-blue-600">Projets</a></li>
+                <li><a href="#veille" class="hover:text-blue-600">Veille</a></li>
+                <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header
+        class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+        <img src="images/cristian.jpeg" alt="Cristian Meyers"
+            class="w-40 h-40 rounded-full shadow-lg mb-6 object-cover">
+        <h1 class="text-5xl font-bold mb-2">Cristian Meyers</h1>
+        <p class="text-xl mb-6">Technicien informatique en alternance</p>
+        <div class="flex space-x-6 text-2xl">
+            <a href="https://github.com/cristianmeyers" target="_blank" class="hover:text-gray-200"><i
+                    class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/cristianmeyers" target="_blank" class="hover:text-gray-200"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="assets/docs/cv.pdf" target="_blank" class="hover:text-gray-200"><i
+                    class="fa-solid fa-download"></i></a>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section id="about" class="py-20 max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Salut 👋</h2>
+        <div class="flex flex-col md:flex-row items-center gap-10">
+            <img src="images/criss.webp" alt="Cristian" class="w-64 h-64 rounded-xl shadow-lg object-cover">
+            <p class="text-lg leading-relaxed">
+                Je m'appelle <strong>Cristian Meyers</strong>, étudiant en <strong>BTS SIO</strong>, spécialité
+                <strong>SISR</strong>.
+                Passionné par l'<strong>informatique</strong>, j'ai acquis des compétences en <strong>développement
+                    web</strong>,
+                <strong>administration réseau</strong> et <strong>cybersécurité</strong>.
+                À travers ce portfolio, je vous présente mes <strong>projets</strong> et <strong>réalisations</strong>,
+                avec l'objectif de devenir
+                <strong>développeur full-stack</strong> et <strong>pentester</strong>.
+            </p>
+        </div>
+    </section>
+
+    <!-- BTS SIO -->
+    <section id="bts" class="py-20 bg-gray-100 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10">Mon BTS SIO</h2>
+            <p class="text-lg text-gray-700 mb-10 text-center">
+                Le <strong>BTS SIO</strong> (Services Informatiques aux Organisations) est un diplôme de niveau
+                <strong>Bac +2</strong>
+                qui forme des techniciens polyvalents dans le domaine des <strong>systèmes d'information</strong>.
+                La formation propose deux spécialisations : <strong>SLAM</strong> et <strong>SISR</strong>.
+            </p>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+                    <img src="images/dev.jpg" alt="SLAM" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">SLAM</h3>
+                    <p>
+                        La spécialité <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers) forme des
+                        techniciens capables
+                        de concevoir, développer et maintenir des <strong>applications informatiques</strong> en
+                        utilisant des langages
+                        tels que <strong>Java</strong>, <strong>C#</strong>, <strong>PHP</strong> et
+                        <strong>JavaScript</strong>.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition">
+                    <img src="images/net.jpg" alt="SISR" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">SISR</h3>
+                    <p>
+                        La spécialité <strong>SISR</strong> (Systèmes et Réseaux) se concentre sur
+                        l'<strong>administration</strong>,
+                        la configuration et la sécurisation des <strong>infrastructures réseaux</strong>.
+                        Elle prépare à assurer le bon fonctionnement et la sécurité des <strong>systèmes
+                            d'information</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="skills" class="py-20 max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Mes Compétences</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                <i class="fa-solid fa-code text-4xl text-blue-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Développement Web</h3>
+                <p>Création de sites web dynamiques et responsives avec HTML, CSS et JavaScript.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                <i class="fa-solid fa-network-wired text-4xl text-green-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Administration Systèmes & Réseaux</h3>
+                <p>Installation, configuration et maintenance de systèmes Windows et Linux.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                <i class="fa-solid fa-shield-halved text-4xl text-red-600 mb-4"></i>
+                <h3 class="font-semibold text-xl mb-2">Cybersécurité</h3>
+                <p>Connaissance des principes de sécurité et prévention des cybermenaces.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projects" class="py-20 bg-gray-100 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-10">Mes Projets</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                    <img src="images/calculatrice.png" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Calculatrice Scientifique</h3>
+                        <p class="text-gray-600 mb-4">Application en JavaScript avec une interface inspirée de Google.
+                        </p>
+                        <a href="https://github.com/cristianmeyers/GCalculator" target="_blank"
+                            class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                    <img src="images/telegram.png" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Bot Telegram</h3>
+                        <p class="text-gray-600 mb-4">Développement d’une application web pour gérer utilisateurs et
+                            produits.</p>
+                        <a href="https://github.com/cristianmeyers/" target="_blank"
+                            class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                    <img src="images/ai cyber.png" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Salle de Cybersécurité</h3>
+                        <p class="text-gray-600 mb-4">Création d’une salle équipée pour la formation pratique en
+                            cybersécurité.</p>
+                        <a href="https://github.com/cristianmeyers/securisation" target="_blank"
+                            class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Veille Technologique -->
+    <section id="veille" class="py-20 max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-10">Veille Technologique</h2>
+        <p class="text-center text-lg mb-10">Je me tiens informé des évolutions en <strong>cybersécurité</strong> et
+            <strong>développement web</strong> à travers différentes sources.</p>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                <img src="images/software.jpg" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p>Suivi des vulnérabilités via <strong>CVE</strong> et bonnes pratiques de sécurité.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                <img src="images/cybersecurity.webp" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p>Consultation quotidienne de sources comme l’<strong>ANSSI</strong>, la <strong>CNIL</strong> et
+                        Exploit Database.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                <img src="images/sources.webp" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p>Veille web via documentations officielles, Udemy, Stack Overflow et YouTube.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                <img src="images/tech.jpg" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <p>Réalisation de projets personnels pour expérimenter et approfondir mes compétences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-gray-100 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-10">Contactez-moi</h2>
+            <p class="mb-6">📧 <a href="mailto:cristian@example.com"
+                    class="text-blue-600 hover:underline">cristian@example.com</a></p>
+            <div class="flex justify-center space-x-6 text-2xl">
+                <a href="https://www.linkedin.com/in/cristianmeyers" target="_blank" class="hover:text-blue-600"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/cristianmeyers" target="_blank" class="hover:text-blue-600"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/justbeingcriss" target="_blank" class="hover:text-blue-600"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center bg-gray-800 text-gray-300">
+        © 2025 Cristian Meyers - BTS SIO
+    </footer>
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/a2e0e6ad54.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
