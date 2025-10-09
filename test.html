@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Cristian Meyers</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a2e0e6ad04.js" crossorigin="anonymous"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="assets/css/third.css">
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -25,86 +29,126 @@
     <nav class="sticky top-0 bg-white shadow z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-center space-x-8 font-medium">
             <a href="#about" class="hover:text-blue-600">Accueil</a>
-            <a href="#bts" class="hover:text-blue-600">BTS SIO</a>
             <a href="#skills" class="hover:text-blue-600">Compétences</a>
+            <a href="#bts" class="hover:text-blue-600">BTS SIO</a>
             <a href="#projects" class="hover:text-blue-600">Projets</a>
             <a href="#veille" class="hover:text-blue-600">Veille</a>
             <a href="#contact" class="hover:text-blue-600">Contact</a>
         </div>
     </nav>
 
-    <!-- À propos -->
-    <section id="about" class="py-20 max-w-5xl mx-auto px-6 bg-white">
-        <h2 class="text-3xl font-bold text-center mb-10">À propos de moi</h2>
-        <div class="flex flex-col md:flex-row items-center gap-8">
-            <img src="images/cristian.jpeg" alt="Photo de profil" class="rounded-full shadow-lg w-48 h-48 object-cover">
-            <p class="text-lg text-gray-700">
-                Je suis étudiant en BTS SIO SISR, passionné par la cybersécurité et le développement informatique.
-                J'aime créer des solutions pratiques et apprendre de nouveaux outils.
-                Mon objectif est d'améliorer la sécurité des systèmes d'information et développer des outils
-                pratiques en cybersécurité.
-            </p>
+    <!-- Introduction -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-10">À propos de moi</h2>
+            <div class="flex flex-col md:flex-row items-center gap-10">
+                <img src="images/cristian.jpeg" alt="Photo de profil"
+                    class="rounded-full shadow-lg w-48 h-48 object-cover">
+                <p class="text-lg leading-relaxed">
+                    Je suis étudiant en BTS SIO SISR, passionné par la cybersécurité et le développement informatique.
+                    J'aime créer des solutions pratiques et apprendre de nouveaux outils.
+                    Mon objectif est d'améliorer la sécurité des systèmes d'information et développer des outils
+                    pratiques en cybersécurité.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Compétences générales -->
+    <!-- Compétences -->
     <section id="skills" class="py-20 bg-gray-100">
-        <h2 class="text-3xl font-bold text-center mb-10">Compétences Techniques</h2>
-        <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-            <span class="px-4 py-2 bg-white shadow rounded-full">HTML5</span>
-            <span class="px-4 py-2 bg-white shadow rounded-full">CSS3</span>
-            <span class="px-4 py-2 bg-white shadow rounded-full">JavaScript</span>
-            <span class="px-4 py-2 bg-white shadow rounded-full">Python</span>
-            <span class="px-4 py-2 bg-white shadow rounded-full">SQL</span>
-            <span class="px-4 py-2 bg-white shadow rounded-full">Linux</span>
-            <span class="px-4 py-2 bg-white shadow rounded-full">Git/GitHub</span>
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Título general -->
+            <h2 class="text-3xl font-bold text-center mb-10">Mes Compétences</h2>
+
+            <!-- Compétences générales (tags) -->
+            <div class="flex flex-wrap justify-center gap-4 mb-14">
+                <span class="px-4 py-2 bg-white shadow rounded-full">HTML5</span>
+                <span class="px-4 py-2 bg-white shadow rounded-full">CSS3</span>
+                <span class="px-4 py-2 bg-white shadow rounded-full">JavaScript</span>
+                <span class="px-4 py-2 bg-white shadow rounded-full">Python</span>
+                <span class="px-4 py-2 bg-white shadow rounded-full">SQL</span>
+                <span class="px-4 py-2 bg-white shadow rounded-full">Linux</span>
+                <span class="px-4 py-2 bg-white shadow rounded-full">Git/GitHub</span>
+            </div>
+
+            <!-- Compétences détaillées (cards) -->
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                    <i class="fa-solid fa-code text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Développement Web</h3>
+                    <p>Création de sites web dynamiques et responsives avec HTML, CSS et JavaScript.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                    <i class="fa-solid fa-network-wired text-4xl text-green-600 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Administration Systèmes & Réseaux</h3>
+                    <p>Installation, configuration et maintenance de systèmes Windows et Linux.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition text-center">
+                    <i class="fa-solid fa-shield-halved text-4xl text-red-600 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-2">Cybersécurité</h3>
+                    <p>Connaissance des principes de sécurité et prévention des cybermenaces.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Compétences détaillées -->
-    <section class="py-20 bg-white">
-        <h2 class="text-3xl font-bold text-center mb-10">Mes Compétences</h2>
-        <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
-            <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition text-center">
-                <i class="fa-solid fa-code text-4xl text-blue-600 mb-4"></i>
-                <h3 class="font-semibold text-xl mb-2">Développement Web</h3>
-                <p>Création de sites web dynamiques et responsives avec HTML, CSS et JavaScript.</p>
-            </div>
-            <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition text-center">
-                <i class="fa-solid fa-network-wired text-4xl text-green-600 mb-4"></i>
-                <h3 class="font-semibold text-xl mb-2">Administration Systèmes & Réseaux</h3>
-                <p>Installation, configuration et maintenance de systèmes Windows et Linux.</p>
-            </div>
-            <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition text-center">
-                <i class="fa-solid fa-shield-halved text-4xl text-red-600 mb-4"></i>
-                <h3 class="font-semibold text-xl mb-2">Cybersécurité</h3>
-                <p>Connaissance des principes de sécurité et prévention des cybermenaces.</p>
-            </div>
-        </div>
-    </section>
 
     <!-- BTS SIO -->
-    <section id="bts" class="py-20 bg-gray-100">
-        <h2 class="text-3xl font-bold text-center mb-10">Mon BTS SIO</h2>
-        <div class="max-w-6xl mx-auto px-6 bg-white p-6 rounded-xl shadow">
-            <h3 class="text-2xl font-semibold mb-4">Présentation du BTS SIO</h3>
-            <p class="mb-4">
-                Le BTS Services Informatiques aux Organisations (SIO) est une formation de deux ans qui prépare
-                les étudiants aux métiers de l'informatique. Il offre deux spécialisations : SLAM et SISR.
+    <section id="bts" class="py-20 bg-white-100 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-6">
+                Mon <span class="text-indigo-600">BTS SIO</span>
+            </h2>
+
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-14 text-center leading-relaxed">
+                Le <strong>BTS SIO</strong> (Brevet de Technicien Supérieur en Services Informatiques aux Organisations)
+                est
+                un diplôme français de niveau <strong>Bac +2</strong> qui prépare les étudiants à des carrières dans le
+                domaine des systèmes d'information. Créé en 2011, il remplace le BTS Informatique de gestion et est
+                structuré autour de blocs de compétences. La formation se déroule sur deux ans dans des lycées ou des
+                centres de formation, et elle peut être suivie en formation initiale, continue ou en alternance.
             </p>
 
-            <h3 class="text-2xl font-semibold mb-4">Mes Compétences Acquises</h3>
-            <p class="mb-4">
-                Programmation (Python, C), administration de systèmes et réseaux (Windows Server, Linux), gestion de
-                bases de données (SQL), développement web (HTML, CSS, JavaScript) et cybersécurité.
-            </p>
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- SLAM -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="overflow-hidden rounded-lg mb-5">
+                        <img src="images/dev.jpg" alt="SLAM"
+                            class="w-full h-56 object-cover rounded-lg hover:scale-105 transition duration-500">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-indigo-600 mb-3">SLAM</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">
+                        La spécialité <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers) forme des
+                        techniciens capables de concevoir, développer et maintenir des <strong>applications
+                            informatiques</strong>.
+                        Les étudiants maîtrisent des langages de programmation comme Java, C#, PHP et JavaScript. Ils
+                        apprennent à analyser les besoins des utilisateurs, à rédiger des spécifications fonctionnelles
+                        et techniques, et à gérer des projets logiciels en utilisant des méthodologies agiles.
+                    </p>
+                </div>
 
-            <h3 class="text-2xl font-semibold mb-4">Expériences Pratiques</h3>
-            <p>
-                Stages en entreprise : création de sites web et configuration de réseaux locaux sécurisés.
-            </p>
+                <!-- SISR -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="overflow-hidden rounded-lg mb-5">
+                        <img src="images/net.jpg" alt="SISR"
+                            class="w-full h-56 object-cover rounded-lg hover:scale-105 transition duration-500">
+                    </div>
+                    <h3 class="text-2xl font-semibold text-indigo-600 mb-3">SISR</h3>
+                    <p class="text-gray-700 leading-relaxed mb-3">
+                        La spécialité <strong>SISR</strong> (Systèmes et Réseaux) se concentre sur l'administration et
+                        la
+                        gestion des systèmes informatiques et des réseaux. Les étudiants acquièrent des compétences en
+                        installation, configuration et sécurisation des infrastructures. Ils sont formés à maintenir et
+                        supporter les systèmes d'information pour garantir leur bon fonctionnement, tout en mettant
+                        l'accent sur la sécurité des données et des réseaux.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- Projets -->
     <section id="projects" class="py-20 bg-white">
