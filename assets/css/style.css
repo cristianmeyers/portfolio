@@ -1,3 +1,74 @@
+:root {
+  --scroll-thumb-color: #0051ff; /* azul principal */
+  --scroll-thumb-color-hover: #00b3ff;
+  --scroll-thumb-color-active: #001aff;
+  --scroll-track-color: transparent;
+  --scroll-width: 7px;
+  --scroll-radius: 10px;
+}
+
 html {
   scroll-behavior: smooth;
+  background: #000;
+  overflow-y: overlay;
+  overflow-x: overlay;
+}
+
+/* ===== CHROMIUM – Scrollbar fina + azul sobre fondo negro ===== */
+::-webkit-scrollbar {
+  width: var(--scroll-width);
+  height: var(--scroll-width);
+  background: var(--scroll-track-color);
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-resizer {
+  background: var(--scroll-track-color) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb-color);
+  border-radius: var(--scroll-radius);
+  border: 2.5px solid transparent; /* más borde = más efecto "flotante" */
+  background-clip: padding-box; /* imprescindible */
+  transition: background-color 0.25s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scroll-thumb-color-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--scroll-thumb-color-active);
+}
+
+/* ===== FIREFOX – también overlay y mismo estilo ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb-color) transparent;
+}
+
+/* ===== FONDO NEGRO TOTAL (por si alguna página no lo tiene) ===== */
+html,
+body {
+  background: #000 !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.animate-blink {
+  animation: blink 1.4s infinite ease-in-out;
 }

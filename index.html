@@ -18,15 +18,49 @@
 <body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- Hero -->
-    <header
-        class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-blue-600 to-purple-600 text-white">
-        <h1 class="text-5xl font-bold mb-4">Cristian Meyers</h1>
-        <p class="text-xl mb-6">Technicien informatique en alternance</p>
-        <a href="#projects"
-            class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-full shadow hover:bg-gray-200 transition">
-            Voir mes projets
-        </a>
+    <header class="h-screen relative flex flex-col justify-center items-center text-center text-white
+    bg-[url('/images/keys.jpg')] bg-cover bg-center bg-no-repeat overflow-hidden">
+
+        <!-- Partículas -->
+        <div id="particles-js" class="absolute inset-0 z-10 pointer-events-none"></div>
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/50 z-20"></div>
+
+        <!-- Contenido -->
+        <div class="relative z-30 px-6">
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-6 drop-shadow-[0_8px_25px_rgba(0,0,0,0.9)]">
+                Cristian <span
+                    class="text-yellow-400 font-extrabold animate-blink drop-shadow-[0_0_25px_rgba(255,255,0,0.6)]">Meyers</span>
+            </h1>
+
+            <p class="text-2xl md:text-3xl mb-10 text-white/90 tracking-wide 
+                  drop-shadow-[0_5px_18px_rgba(0,0,0,0.85)] backdrop-blur-sm">
+                Technicien informatique en alternance
+            </p>
+
+            <!-- ICONOS -->
+            <div class="flex gap-10 justify-center text-4xl mt-2">
+                <a href="https://github.com/cristianmeyers"
+                    class="hover:text-yellow-400 transition transform hover:scale-125 drop-shadow-[0_0_15px_rgba(0,0,0,0.7)]">
+                    <i class="fab fa-github"></i>
+                </a>
+
+                <a href="https://linkedin.com"
+                    class="hover:text-yellow-400 transition transform hover:scale-125 drop-shadow-[0_0_15px_rgba(0,0,0,0.7)]">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+
+                <a href="mailto:cristian@mail.com"
+                    class="hover:text-yellow-400 transition transform hover:scale-125 drop-shadow-[0_0_15px_rgba(0,0,0,0.7)]">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+
     </header>
+
+
 
     <!-- Navbar sticky -->
     <nav class="hidden md:flex sticky top-0 bg-white shadow z-50">
@@ -43,7 +77,7 @@
 
 
     <!-- Introduction -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-10">À propos de moi</h2>
             <div class="flex flex-col md:flex-row items-center gap-10">
@@ -80,7 +114,7 @@
 
 
     <!-- Compétences -->
-    <section id="skills" class="py-20 bg-gray-50">
+    <section id="skills" class="py-20">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <!-- Título general -->
             <h2 class="text-4xl font-extrabold text-gray-800 mb-12">
@@ -172,11 +206,8 @@
     </section>
 
 
-
-
-
     <!-- BTS SIO -->
-    <section id="bts" class="py-20 bg-white-100 px-6">
+    <section id="bts" class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-6">
                 Mon <span class="text-indigo-600">BTS SIO</span>
@@ -233,7 +264,7 @@
 
 
     <!-- Projets -->
-    <section id="projects" class="py-20 bg-white">
+    <section id="projects" class="py-20">
         <h2 class="text-3xl font-bold text-center mb-10">Projets</h2>
         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
             <div class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
@@ -269,7 +300,7 @@
     </section>
 
     <!-- Veille Technologique -->
-    <section id="veille" class="py-20 bg-white-100 px-6">
+    <section id="veille" class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-6">
                 Ma <span class="text-indigo-600">Veille Technologique</span>
@@ -373,7 +404,7 @@
     </section>
 
     <!-- Portfolio BTS SIO – E5 & E6 -->
-    <section id="e5" class="py-20 bg-white px-6">
+    <section id="e5" class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
 
             <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-12">
@@ -389,7 +420,7 @@
                     Cette section contient mon tableau de synthèse, mes fiches projets, les preuves techniques et les
                     compétences mobilisées.
                 </p>
-                <button onclick="openPdfModal('assets/docs/e5.pdf')"
+                <button id="btnE5"
                     class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1">
                     Voir PDF
                 </button>
@@ -486,11 +517,8 @@
     </section>
 
 
-
-
-
     <!-- Contact -->
-    <section id="contact" class="py-20 bg-grey-100">
+    <section id="contact" class="py-20">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-12">Contactez-moi</h2>
             <div class="grid md:grid-cols-3 gap-10 text-center">
@@ -558,19 +586,8 @@
     </div>
 
     <!-- JS -->
-    <script>
-        function openPdfModal(pdfUrl) {
-            document.getElementById('pdfViewer').src = pdfUrl;
-            document.getElementById('pdfModal').classList.remove('hidden');
-            document.body.classList.add('overflow-hidden');
-        }
+    <script src="assets/js/script.js"></script>
 
-        function closePdfModal() {
-            document.getElementById('pdfModal').classList.add('hidden');
-            document.getElementById('pdfViewer').src = "";
-            document.body.classList.remove('overflow-hidden');
-        }
-    </script>
 
 
 
