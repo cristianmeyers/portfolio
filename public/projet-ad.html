@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Projet : Déploiement Zentyal (AD)</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+	<header class="bg-indigo-600 text-white py-6 shadow-xl">
+		<div class="max-w-5xl mx-auto px-6">
+			<h1 class="text-4xl font-extrabold flex items-center gap-3">
+				<i class="fa-solid fa-server"></i>
+				Déploiement d'une Infrastructure Active Directory avec Zentyal
+			</h1>
+			<p class="text-indigo-200 mt-2 text-lg">Projet E5 — BTS SIO SISR</p>
+		</div>
+	</header>
+
+	<main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
+
+		<!-- CONTEXTE -->
+		<section class="bg-white p-10 rounded-2xl shadow-lg">
+			<h2 class="text-3xl font-bold mb-4 text-indigo-700">1. Contexte</h2>
+			<p class="leading-relaxed text-lg">
+				L'objectif de ce projet était de mettre en place un <strong>contrôleur de domaine</strong> complet
+				au sein d'une petite infrastructure d'entreprise. Pour cela, j'ai utilisé
+				<strong>Zentyal Server</strong>, une distribution basée sur Ubuntu, permettant d'intégrer de manière
+				simple
+				les services Active Directory. Le déploiement devait s'intégrer à un réseau existant, dans lequel
+				un <strong>serveur DHCP externe</strong> était déjà en production.
+			</p>
+		</section>
+
+		<!-- OBJECTIFS -->
+		<section class="bg-white p-10 rounded-2xl shadow-lg">
+			<h2 class="text-3xl font-bold mb-4 text-indigo-700">2. Objectifs du projet</h2>
+			<ul class="list-disc pl-5 space-y-2 text-lg">
+				<li>Installer et configurer un serveur Zentyal en tant que <strong>contrôleur de domaine</strong>.</li>
+				<li>Gérer l'intégration avec un <strong>serveur DHCP externe</strong>.</li>
+				<li>Créer et organiser les <strong>utilisateurs</strong> et <strong>groupes</strong>.</li>
+				<li>Mettre en place une <strong>politique GPO</strong> basique.</li>
+				<li>Valider l'intégration au réseau et la connexion des postes clients.</li>
+			</ul>
+		</section>
+
+		<!-- TOPOLOGIE -->
+		<section class="bg-white p-10 rounded-2xl shadow-lg">
+			<h2 class="text-3xl font-bold mb-4 text-indigo-700">3. Topologie Réseau</h2>
+			<p class="text-lg mb-4">Voici la structure simplifiée du réseau mis en place :</p>
+			<div class="bg-gray-50 p-6 rounded-xl shadow-inner text-center">
+				<pre class="text-sm md:text-base">
++------------------+         +-------------------+
+| Serveur DHCP     |         | Serveur Zentyal   |
+| (externe)        |  --->   | (AD / DNS)        |
++------------------+         +-------------------+
+               \             /
+                \           /
+              +-------------------+
+              | Postes Clients    |
+              +-------------------+
+                </pre>
+			</div>
+		</section>
+
+		<!-- REALISATIONS -->
+		<section class="bg-white p-10 rounded-2xl shadow-lg">
+			<h2 class="text-3xl font-bold mb-4 text-indigo-700">4. Réalisations Techniques</h2>
+			<ul class="list-disc pl-5 space-y-3 text-lg">
+				<li>Installation de Zentyal Server sur une VM dédiée.</li>
+				<li>Activation et configuration des modules : <strong>DNS</strong>, <strong>AD Domain Services</strong>,
+					<strong>CA</strong>.
+				</li>
+				<li>Déclaration du domaine : <code>entreprise.local</code>.</li>
+				<li>Pointage du serveur DHCP externe vers le DNS Zentyal.</li>
+				<li>Création des utilisateurs : employés, service informatique.</li>
+				<li>Mise en place d’unités d’organisation (OU).</li>
+				<li>Déploiement d'une GPO : mot de passe, fond d'écran, restrictions.</li>
+				<li>Intégration et test de plusieurs postes Windows dans le domaine.</li>
+			</ul>
+		</section>
+
+		<!-- CAPTURES -->
+		<section class="bg-white p-10 rounded-2xl shadow-lg">
+			<h2 class="text-3xl font-bold mb-4 text-indigo-700">5. Captures d'Écran</h2>
+			<p class="text-lg mb-4">Quelques exemples d'interface :</p>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div class="bg-gray-200 h-48 rounded-xl flex items-center justify-center text-gray-500">Capture Zentyal
+					AD</div>
+				<div class="bg-gray-200 h-48 rounded-xl flex items-center justify-center text-gray-500">Interface DNS
+				</div>
+			</div>
+		</section>
+
+		<!-- COMPETENCES -->
+		<section class="bg-white p-10 rounded-2xl shadow-lg">
+			<h2 class="text-3xl font-bold mb-4 text-indigo-700">6. Compétences mobilisées (RNCP)</h2>
+			<ul class="list-disc pl-5 space-y-2 text-lg">
+				<li>P7 — Administrer les réseaux et les systèmes.</li>
+				<li>P6 — Gérer le patrimoine informatique.</li>
+				<li>P4 — Assurer la cybersécurité d'une solution.</li>
+			</ul>
+		</section>
+
+		<!-- RETOUR -->
+		<div class="text-center">
+			<a href="/index.html#e5"
+				class="px-8 py-4 bg-indigo-600 text-white rounded-xl shadow-lg hover:bg-indigo-700 transition">⬅ Retour
+				au portfolio</a>
+		</div>
+
+	</main>
+
+</body>
+
+</html>
