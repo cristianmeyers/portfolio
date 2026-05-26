@@ -168,36 +168,58 @@
     <section id="projects" class="py-20">
         <h2 class="text-3xl font-bold text-center mb-10">Projets</h2>
         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
-            <div class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
-                <img src="images/tech.jpg" alt="Projet 1" class="w-full h-48 object-cover">
+
+            <!-- PROJET 1 : IA LOCALE -->
+            <div
+                class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer relative group">
+                <!-- Lien invisible qui couvre toute la carte -->
+                <a href="public/ia-locale.html" class="absolute inset-0 z-10" target="_blank"></a>
+
+                <img src=" images/ia.jpg" alt="Projet 1" class="w-full h-48 object-cover">
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2">Bot transcription vidéos</h3>
-                    <p class="text-gray-600 mb-4">Bot Telegram de transcription vidéo à texte avec Whisper d'OpenAI</p>
+                    <h3 class="text-xl font-semibold mb-2">Plateforme IA Locale</h3>
+                    <p class="text-gray-600 mb-4">Infrastructure d'inférence IA auto-hébergée intégrant Qwen2.5 7B,
+                        Gemma4, OpenWebUI et automatisation via n8n.</p>
+                    <!-- z-20 pour que le lien GitHub reste cliquable en priorité -->
                     <a href="https://github.com/cristianmeyers/videototext" target="_blank"
-                        class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                        class="text-blue-600 font-semibold hover:underline relative z-20">Voir sur GitHub</a>
                 </div>
             </div>
-            <div class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
+
+            <!-- PROJET 2 : CYBERSALLE -->
+            <div
+                class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer relative group">
+                <!-- Lien invisible qui couvre toute la carte -->
+                <a href="public/cybersalle.html" class="absolute inset-0 z-10" target="_blank"></a>
+
                 <img src="images/ai cyber.png" alt="Projet 2" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-semibold mb-2">Cybersalle</h3>
                     <p class="text-gray-600 mb-4">Salle dédiée à la cybersécurité, équipée pour la formation pratique.
                     </p>
+                    <!-- z-20 pour que le lien GitHub reste cliquable en priorité -->
                     <a href="https://github.com/cristianmeyers/cyberenv" target="_blank"
-                        class="text-blue-600 font-semibold hover:underline">Voir sur GitHub</a>
+                        class="text-blue-600 font-semibold hover:underline relative z-20">Voir sur GitHub</a>
                 </div>
             </div>
-            <div class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition">
+
+            <!-- PROJET 3 : WAKEJS -->
+            <div
+                class="bg-gray-50 shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition cursor-pointer relative group">
+                <!-- Lien invisible qui couvre toute la carte -->
+                <a href="public/wakejs.html" class="absolute inset-0 z-10" target="_blank"></a>
+
                 <img src="images/dev.jpg" alt="Projet 3" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-semibold mb-2">WakeJS - WakeOnLan Centralisé</h3>
                     <p class="text-gray-600 mb-4">Reveil de machines distantes via Wake-on-LAN à travers une interface
                         web et CLI.</p>
+                    <!-- z-20 pour que le lien GitHub reste cliquable en priorité -->
                     <a href="https://github.com/cristianmeyers/wakejs" target="_blank"
-                        class="text-blue-600 font-semibold hover:underline">Voir
-                        sur GitHub</a>
+                        class="text-blue-600 font-semibold hover:underline relative z-20">Voir sur GitHub</a>
                 </div>
             </div>
+
         </div>
     </section>
 

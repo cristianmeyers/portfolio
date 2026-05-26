@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet | Cybersalle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0f172a] text-slate-200 font-sans selection:bg-blue-500/30">
+
+    <div class="blob top-[-10%] left-[-10%]"></div>
+    <div class="blob bottom-[-10%] right-[-10%]"></div>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+
+        <a href="../index.html"
+            class="inline-flex items-center text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors mb-12 group">
+            <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Retour au Portfolio
+        </a>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+            <div class="space-y-6">
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                    </div>
+                    <img src="../images/ai cyber.png" alt="Cybersalle"
+                        class="relative rounded-2xl w-full object-cover shadow-2xl">
+                </div>
+
+                <div class="glass rounded-2xl p-6 flex justify-around items-center">
+                    <div class="text-center">
+                        <p class="text-blue-400 font-bold text-xl text-shadow">100%</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest">Isolé</p>
+                    </div>
+                    <div class="h-8 w-[1px] bg-slate-700"></div>
+                    <div class="text-center">
+                        <p class="text-blue-400 font-bold text-xl text-shadow">Lab</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest">Environnement</p>
+                    </div>
+                    <div class="h-8 w-[1px] bg-slate-700"></div>
+                    <div class="text-center">
+                        <p class="text-blue-400 font-bold text-xl text-shadow">Sec</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest">Focus</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div>
+                    <span class="text-blue-500 font-semibold tracking-wider uppercase text-sm">Projet
+                        Infrastructure</span>
+                    <h1 class="text-5xl font-extrabold text-white mt-2 tracking-tight">Cybersalle</h1>
+                </div>
+
+                <p class="text-lg text-slate-400 leading-relaxed">
+                    Conception d'un laboratoire de sécurité périmétrique conçu pour simuler des attaques réelles dans un
+                    cadre contrôlé. Une sandbox géante pour forger ses compétences en défense et en intrusion.
+                </p>
+
+                <div class="space-y-4">
+                    <h3 class="text-white font-semibold flex items-center">
+                        <span class="w-8 h-[2px] bg-blue-600 mr-3"></span>
+                        Stack Technique
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md text-sm">Proxmox
+                            VE</span>
+                        <span
+                            class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md text-sm">pfsense</span>
+                        <span
+                            class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md text-sm">Wazuh
+                            SIEM</span>
+                        <span
+                            class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md text-sm">Kali/Parrot</span>
+                        <span
+                            class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md text-sm">VLAN
+                            Segregation</span>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex gap-4">
+                    <a href="https://github.com/cristianmeyers/cyberenv" target="_blank"
+                        class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-600/20 transition-all active:scale-95">
+                        Code Source
+                    </a>
+                    <a href="https://github.com/cristianmeyers/cyberenv target=" _blank"
+                        class="glass hover:bg-white/5 text-white px-8 py-4 rounded-xl font-bold transition-all">
+                        Documentation
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-24 grid md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-2xl">
+                <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                </div>
+                <h4 class="text-white font-bold mb-2">Sécurité Max</h4>
+                <p class="text-slate-500 text-sm">Isolation complète du réseau domestique pour éviter toute fuite de
+                    malware.</p>
+            </div>
+            <div class="glass p-8 rounded-2xl">
+                <div class="w-12 h-12 bg-cyan-600/20 rounded-lg flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2">
+                        </path>
+                    </svg>
+                </div>
+                <h4 class="text-white font-bold mb-2">Monitoring</h4>
+                <p class="text-slate-500 text-sm">Visualisation des logs en temps réel via une stack ELK centralisée.
+                </p>
+            </div>
+            <div class="glass p-8 rounded-2xl">
+                <div class="w-12 h-12 bg-indigo-600/20 rounded-lg flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h4 class="text-white font-bold mb-2">Performance</h4>
+                <p class="text-slate-500 text-sm">Optimisation des ressources VM pour faire tourner plus de 10 cibles
+                    simultanément.</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
