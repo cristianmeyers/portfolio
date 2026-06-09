@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WakeJS – Cristian Meyers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg: #0a0f1a;
+            --surface: #111827;
+            --surface2: #1a2236;
+            --border: #1f2d45;
+            --accent: #38bdf8;
+            /* sky-400 - réseau / signal */
+            --accent2: #0ea5e9;
+            --green: #22c55e;
+            --yellow: #facc15;
+            --red: #ef4444;
+            --indigo: #818cf8;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 15, 26, .88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: .9rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--mono);
+            font-size: .85rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .nav-links a {
+            font-size: .875rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated pulse rings - evokes a WoL magic packet broadcast */
+        .rings {
+            position: absolute;
+            width: 560px;
+            height: 560px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -54%);
+            pointer-events: none;
+        }
+
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(56, 189, 248, .18);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3.6s ease-out infinite;
+        }
+
+        .ring:nth-child(1) {
+            width: 160px;
+            height: 160px;
+            animation-delay: 0s;
+        }
+
+        .ring:nth-child(2) {
+            width: 280px;
+            height: 280px;
+            animation-delay: .7s;
+        }
+
+        .ring:nth-child(3) {
+            width: 420px;
+            height: 420px;
+            animation-delay: 1.4s;
+        }
+
+        .ring:nth-child(4) {
+            width: 560px;
+            height: 560px;
+            animation-delay: 2.1s;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: .7;
+                transform: translate(-50%, -50%) scale(.85);
+            }
+
+            70% {
+                opacity: .1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .hero-badge {
+            font-family: var(--mono);
+            font-size: .72rem;
+            letter-spacing: .14em;
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, .3);
+            background: rgba(56, 189, 248, .06);
+            padding: .35rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.75;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0a0f1a;
+            font-weight: 700;
+            padding: .75rem 1.75rem;
+            border-radius: .75rem;
+            text-decoration: none;
+            transition: background .2s, transform .2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent2);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 600;
+            padding: .75rem 1.75rem;
+            border-radius: .75rem;
+            text-decoration: none;
+            background: var(--surface);
+            transition: border-color .2s, transform .2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: .68rem;
+            letter-spacing: .18em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: .5rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-sub {
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 640px;
+        }
+
+        /* ── FEATURE CARDS ── */
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .feat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .feat-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .feat-icon {
+            width: 2.6rem;
+            height: 2.6rem;
+            border-radius: .6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feat-card h4 {
+            font-weight: 700;
+            margin-bottom: .4rem;
+            font-size: .975rem;
+        }
+
+        .feat-card p {
+            color: var(--muted);
+            font-size: .875rem;
+            line-height: 1.65;
+        }
+
+        /* ── STACK ── */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .stack-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: .55rem;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .stack-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .stack-card-top {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .stack-card-icon {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            flex-shrink: 0;
+        }
+
+        .stack-layer {
+            font-size: .68rem;
+            font-family: var(--mono);
+            letter-spacing: .1em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .stack-tech {
+            font-family: var(--mono);
+            font-size: .88rem;
+            color: var(--text);
+            font-weight: 600;
+            line-height: 1.45;
+        }
+
+        /* ── FILE TREE ── */
+        .tree-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            padding: 2rem;
+            overflow-x: auto;
+            margin-top: 2.5rem;
+        }
+
+        .tree-wrap pre {
+            font-family: var(--mono);
+            font-size: .8rem;
+            color: var(--muted);
+            line-height: 1.85;
+            white-space: pre;
+        }
+
+        .tree-wrap pre .dir {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .tree-wrap pre .file {
+            color: var(--text);
+        }
+
+        .tree-wrap pre .cmt {
+            color: #334155;
+        }
+
+        /* ── VLAN TABLE ── */
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            font-family: var(--mono);
+            font-size: .68rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: .75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: .85rem 1rem;
+            border-bottom: 1px solid rgba(31, 45, 69, .6);
+            font-size: .9rem;
+            color: var(--muted);
+        }
+
+        tr:hover td {
+            background: var(--surface2);
+            color: var(--text);
+        }
+
+        .pill {
+            font-family: var(--mono);
+            font-size: .75rem;
+            padding: .22rem .65rem;
+            border-radius: .4rem;
+            font-weight: 700;
+        }
+
+        /* ── ARCH DIAGRAM ── */
+        .arch-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            overflow-x: auto;
+        }
+
+        /* ── PREREQS ── */
+        .prereq-list {
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+            margin-top: 2rem;
+        }
+
+        .prereq-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: .75rem;
+            padding: 1rem 1.25rem;
+        }
+
+        .prereq-icon {
+            flex-shrink: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+        }
+
+        .prereq-item p {
+            font-size: .9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .prereq-item strong {
+            color: var(--text);
+        }
+
+        /* ── INSTALL ── */
+        .code-block {
+            background: #060c18;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem 1.75rem;
+            margin-top: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: var(--mono);
+            font-size: .82rem;
+            color: var(--text);
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .code-block .prompt {
+            color: var(--accent);
+        }
+
+        .code-block .cmd {
+            color: #e2e8f0;
+        }
+
+        .code-block .cmt {
+            color: #334155;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-logo" href="../index.html">← cristian.meyers</a>
+        <div class="nav-links">
+            <a href="#overview">Vue d'ensemble</a>
+            <a href="#stack">Stack</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#structure">Structure</a>
+            <a href="#install">Installation</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="rings">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+        <div style="position:relative;z-index:2">
+            <div class="hero-badge">// projet · sysadmin · réseau</div>
+            <h1>Wake<span>JS</span></h1>
+            <p>Gestion centralisée Wake-on-LAN. Réveillez, testez la connection ou éteignez un parc informatique entier
+                depuis une
+                interface web, organisée par site, département et salle.</p>
+            <div class="hero-cta">
+                <a href="https://github.com/cristianmeyers/wakejs" target="_blank" class="btn-primary">
+                    <i class="fab fa-github" style="margin-right:.5rem"></i>Voir sur GitHub
+                </a>
+                <a href="#overview" class="btn-outline">Découvrir le projet</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+        <div class="container">
+            <div class="section-label">01 · vue d'ensemble</div>
+            <h2 class="section-title">À quoi sert WakeJS ?</h2>
+            <p class="section-sub">Dans un environnement multi-VLAN comme une cybersalle ou un établissement scolaire,
+                allumer manuellement chaque poste est une perte de temps. WakeJS lit la configuration DHCP ISC, résout
+                automatiquement les adresses broadcast par VLAN et envoie le paquet magique - le tout depuis un
+                navigateur.</p>
+
+            <div class="feat-grid">
+                <div class="feat-card">
+                    <div class="feat-icon" style="background:rgba(56,189,248,.1);color:var(--accent)"><i
+                            class="fas fa-power-off"></i></div>
+                    <h4>Wake-on-LAN</h4>
+                    <p>Envoi de paquets magiques UDP port 9 vers les machines cibles, avec résolution automatique du
+                        broadcast par VLAN.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon" style="background:rgba(34,197,94,.1);color:var(--green)"><i
+                            class="fas fa-satellite-dish"></i></div>
+                    <h4>Ping ICMP</h4>
+                    <p>Vérification instantanée du statut de chaque poste depuis l'interface. Retour visuel en temps
+                        réel.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon" style="background:rgba(239,68,68,.1);color:var(--red)"><i
+                            class="fas fa-moon"></i></div>
+                    <h4>Arrêt distant</h4>
+                    <p>Extinction des postes via SSH (<code
+                            style="font-family:var(--mono);font-size:.85em">sshpass + sudo shutdown</code>) sans accès
+                        physique.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon" style="background:rgba(129,140,248,.1);color:var(--indigo)"><i
+                            class="fas fa-shield-alt"></i></div>
+                    <h4>Auth Active Directory</h4>
+                    <p>Authentification JWT couplée à LDAP/AD. Seuls les comptes du domaine peuvent accéder à
+                        l'interface.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon" style="background:rgba(250,204,21,.1);color:var(--yellow)"><i
+                            class="fas fa-layer-group"></i></div>
+                    <h4>Multi-VLAN</h4>
+                    <p>Gestion de plusieurs plages IP avec calcul automatique de l'adresse broadcast selon l'IP de
+                        chaque hôte.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon" style="background:rgba(56,189,248,.1);color:var(--accent)"><i
+                            class="fas fa-file-code"></i></div>
+                    <h4>Config DHCP ISC</h4>
+                    <p>Parsing direct du fichier <code
+                            style="font-family:var(--mono);font-size:.85em">dhcp-template.conf</code> - pas de base de
+                        données séparée à maintenir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- STACK -->
+    <section id="stack">
+        <div class="container">
+            <div class="section-label">02 · stack technique</div>
+            <h2 class="section-title">Technologies utilisées</h2>
+            <p class="section-sub">Une architecture volontairement légère : Node.js côté serveur, Vanilla JS côté client
+                - pas de framework lourd, déploiement minimal.</p>
+
+            <div class="stack-grid">
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(34,197,94,.12);color:#22c55e"><i
+                                class="fab fa-node-js"></i></div>
+                        <span class="stack-layer">Backend</span>
+                    </div>
+                    <span class="stack-tech">Node.js · Express</span>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(129,140,248,.12);color:var(--indigo)"><i
+                                class="fas fa-shield-alt"></i></div>
+                        <span class="stack-layer">Authentification</span>
+                    </div>
+                    <span class="stack-tech">JWT + LDAP / AD</span>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(56,189,248,.12);color:var(--accent)"><i
+                                class="fas fa-desktop"></i></div>
+                        <span class="stack-layer">Frontend</span>
+                    </div>
+                    <span class="stack-tech">HTML · Tailwind · ES Modules</span>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(250,204,21,.12);color:var(--yellow)"><i
+                                class="fas fa-power-off"></i></div>
+                        <span class="stack-layer">Wake-on-LAN</span>
+                    </div>
+                    <span class="stack-tech">UDP port 9 - paquet magique</span>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(56,189,248,.12);color:var(--accent)"><i
+                                class="fas fa-satellite-dish"></i></div>
+                        <span class="stack-layer">Ping</span>
+                    </div>
+                    <span class="stack-tech">ICMP</span>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(239,68,68,.12);color:var(--red)"><i
+                                class="fas fa-terminal"></i></div>
+                        <span class="stack-layer">Arrêt distant</span>
+                    </div>
+                    <span class="stack-tech">SSH · sshpass · shutdown</span>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(56,189,248,.12);color:var(--accent)"><i
+                                class="fas fa-file-code"></i></div>
+                        <span class="stack-layer">Hôtes</span>
+                    </div>
+                    <span class="stack-tech">Parsing config DHCP ISC</span>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-card-top">
+                        <div class="stack-card-icon" style="background:rgba(250,204,21,.12);color:var(--yellow)"><i
+                                class="fas fa-scroll"></i></div>
+                        <span class="stack-layer">Logs</span>
+                    </div>
+                    <span class="stack-tech">Fichier + console coloré</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ARCHITECTURE RÉSEAU -->
+    <section id="architecture">
+        <div class="container">
+            <div class="section-label">03 · architecture réseau</div>
+            <h2 class="section-title">Deux VLANs, un seul outil</h2>
+            <p class="section-sub">WakeJS résout automatiquement l'adresse broadcast à envoyer selon l'IP de l'hôte
+                cible. Pas besoin de configuration manuelle par VLAN.</p>
+
+            <div class="arch-wrap">
+                <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg"
+                    style="width:100%;max-width:760px;display:block;margin:0 auto">
+                    <defs>
+                        <marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                            <path d="M0,0 L0,6 L8,3 z" fill="#38bdf8" />
+                        </marker>
+                    </defs>
+
+                    <!-- WakeJS server -->
+                    <rect x="290" y="90" width="160" height="60" rx="10" fill="#111827" stroke="#38bdf8"
+                        stroke-width="1.8" />
+                    <text x="370" y="116" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13"
+                        fill="#38bdf8" font-weight="700">WakeJS</text>
+                    <text x="370" y="134" text-anchor="middle" font-family="Inter,sans-serif" font-size="10"
+                        fill="#64748b">API Node.js · :3000</text>
+
+                    <!-- VLAN Gestion -->
+                    <rect x="30" y="30" width="200" height="70" rx="10" fill="#111827" stroke="#1f2d45"
+                        stroke-width="1.5" />
+                    <text x="130" y="56" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11"
+                        fill="#38bdf8" font-weight="600">VLAN Gestion</text>
+                    <text x="130" y="72" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9"
+                        fill="#64748b">172.18.53.x – 172.18.59.x</text>
+                    <text x="130" y="87" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9"
+                        fill="#22c55e">broadcast → 172.18.60.255</text>
+                    <!-- arrow -->
+                    <line x1="230" y1="80" x2="290" y2="118" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="5,3"
+                        marker-end="url(#a)" />
+
+                    <!-- VLAN Enseignement -->
+                    <rect x="530" y="30" width="200" height="70" rx="10" fill="#111827" stroke="#1f2d45"
+                        stroke-width="1.5" />
+                    <text x="630" y="56" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11"
+                        fill="#38bdf8" font-weight="600">VLAN Enseignement</text>
+                    <text x="630" y="72" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9"
+                        fill="#64748b">172.18.240.x – 172.18.247.x</text>
+                    <text x="630" y="87" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9"
+                        fill="#22c55e">broadcast → 172.18.240.255</text>
+                    <line x1="530" y1="80" x2="450" y2="118" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="5,3"
+                        marker-end="url(#a)" />
+
+                    <!-- Machines cibles -->
+                    <rect x="30" y="160" width="90" height="40" rx="8" fill="#0a0f1a" stroke="#1f2d45"
+                        stroke-width="1.2" />
+                    <text x="75" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="10"
+                        fill="#64748b">PC · Salle A</text>
+                    <rect x="135" y="160" width="90" height="40" rx="8" fill="#0a0f1a" stroke="#1f2d45"
+                        stroke-width="1.2" />
+                    <text x="180" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="10"
+                        fill="#64748b">PC · Salle B</text>
+                    <rect x="540" y="160" width="90" height="40" rx="8" fill="#0a0f1a" stroke="#1f2d45"
+                        stroke-width="1.2" />
+                    <text x="585" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="10"
+                        fill="#64748b">PC · Cours 1</text>
+                    <rect x="645" y="160" width="90" height="40" rx="8" fill="#0a0f1a" stroke="#1f2d45"
+                        stroke-width="1.2" />
+                    <text x="690" y="185" text-anchor="middle" font-family="Inter,sans-serif" font-size="10"
+                        fill="#64748b">PC · Cours 2</text>
+
+                    <line x1="75" y1="160" x2="100" y2="100" stroke="#1f2d45" stroke-width="1" />
+                    <line x1="180" y1="160" x2="155" y2="100" stroke="#1f2d45" stroke-width="1" />
+                    <line x1="585" y1="160" x2="605" y2="100" stroke="#1f2d45" stroke-width="1" />
+                    <line x1="690" y1="160" x2="660" y2="100" stroke="#1f2d45" stroke-width="1" />
+
+                    <!-- Browser user -->
+                    <rect x="310" y="188" width="120" height="40" rx="8" fill="#0a0f1a" stroke="#38bdf8"
+                        stroke-width="1.2" />
+                    <text x="370" y="208" text-anchor="middle" font-family="Inter,sans-serif" font-size="10"
+                        fill="#38bdf8">Navigateur Admin</text>
+                    <text x="370" y="222" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8"
+                        fill="#64748b">Auth JWT + AD</text>
+                    <line x1="370" y1="188" x2="370" y2="150" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="4,2"
+                        marker-end="url(#a)" />
+                </svg>
+            </div>
+
+            <!-- VLAN table -->
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>VLAN</th>
+                            <th>Plage IP</th>
+                            <th>Broadcast</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="pill"
+                                    style="background:rgba(56,189,248,.12);color:var(--accent)">Gestion</span></td>
+                            <td><span style="font-family:var(--mono);font-size:.82rem">172.18.53.x → 172.18.59.x</span>
+                            </td>
+                            <td><span
+                                    style="font-family:var(--mono);font-size:.82rem;color:var(--green)">172.18.60.255</span>
+                            </td>
+                            <td>Postes admin, salles de gestion</td>
+                        </tr>
+                        <tr>
+                            <td><span class="pill"
+                                    style="background:rgba(129,140,248,.12);color:var(--indigo)">Enseignement</span>
+                            </td>
+                            <td><span style="font-family:var(--mono);font-size:.82rem">172.18.240.x →
+                                    172.18.247.x</span></td>
+                            <td><span
+                                    style="font-family:var(--mono);font-size:.82rem;color:var(--green)">172.18.240.255</span>
+                            </td>
+                            <td>Salles de cours, postes apprenants</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- STRUCTURE -->
+    <section id="structure">
+        <div class="container">
+            <div class="section-label">04 · structure du projet</div>
+            <h2 class="section-title">Organisation du dépôt</h2>
+            <p class="section-sub">Architecture full-stack claire : backend Express séparé du frontend statique, scripts
+                utilitaires indépendants.</p>
+
+            <div class="tree-wrap">
+                <pre>
+<span class="dir">wakejs/</span>
+├── <span class="dir">backend/</span>                    <span class="cmt"># API REST Node.js / Express</span>
+│   ├── <span class="dir">config/</span>
+│   │   ├── <span class="file">config.json</span>         <span class="cmt"># Config serveur (VLAN, SSH, AD, WoL)</span>
+│   │   └── <span class="file">dhcp-template.conf</span>  <span class="cmt"># Définitions des hôtes (MAC, IP, salle)</span>
+│   └── <span class="dir">src/</span>
+│       ├── <span class="file">index.js</span>            <span class="cmt"># Bootstrap Express - écoute :3000</span>
+│       ├── <span class="dir">routes/</span>
+│       │   └── <span class="file">apiRoutes.js</span>    <span class="cmt"># Déclaration des routes API</span>
+│       ├── <span class="dir">controllers/</span>
+│       │   └── <span class="file">actionController.js</span>
+│       ├── <span class="dir">middlewares/</span>
+│       │   ├── <span class="file">auth.js</span>         <span class="cmt"># Vérification JWT</span>
+│       │   └── <span class="file">validator.js</span>    <span class="cmt"># Validation des payloads</span>
+│       └── <span class="dir">services/</span>
+│           └── <span class="file">loggerService.js</span>  <span class="cmt"># Logger fichier + console coloré</span>
+│
+├── <span class="dir">frontend/</span>                   <span class="cmt"># Interface web statique</span>
+│   ├── <span class="file">index.html</span>
+│   └── <span class="dir">assets/</span>
+│       ├── <span class="dir">js/</span>
+│       │   ├── <span class="file">app.js</span>          <span class="cmt"># Point d'entrée frontend</span>
+│       │   ├── <span class="file">api.js</span>          <span class="cmt"># Appels HTTP vers le backend</span>
+│       │   ├── <span class="file">theme.js</span>        <span class="cmt"># Gestion dark / light mode</span>
+│       │   └── <span class="dir">components/</span>
+│       │       ├── <span class="file">navigation.js</span>  <span class="cmt"># Sélection département / salle</span>
+│       │       ├── <span class="file">hosts.js</span>       <span class="cmt"># Rendu et actions sur les postes</span>
+│       │       └── <span class="file">search.js</span>      <span class="cmt"># Recherche globale</span>
+│       └── <span class="dir">config/</span>
+│           ├── <span class="file">config.json</span>     <span class="cmt"># Config frontend (API, UI, sites)</span>
+│           └── <span class="file">rooms.json</span>      <span class="cmt"># Mapping départements → salles → hôtes</span>
+│
+└── <span class="dir">scripts/</span>
+    ├── <span class="file">wakejs.sh</span>           <span class="cmt"># Script de démarrage</span>
+    └── <span class="file">diagnostic.sh</span>      <span class="cmt"># Utilitaire de diagnostic réseau</span>
+</pre>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- INSTALL -->
+    <section id="install">
+        <div class="container">
+            <div class="section-label">05 · installation</div>
+            <h2 class="section-title">Démarrage rapide</h2>
+            <p class="section-sub">Prérequis avant installation - chaque point est indispensable au bon fonctionnement
+                de WakeJS.</p>
+
+            <div class="prereq-list" style="margin-bottom:2.5rem">
+                <div class="prereq-item">
+                    <div class="prereq-icon" style="background:rgba(56,189,248,.1);color:var(--accent)"><i
+                            class="fab fa-node-js"></i></div>
+                    <p><strong>Node.js ≥ 18</strong> - runtime backend obligatoire.</p>
+                </div>
+                <div class="prereq-item">
+                    <div class="prereq-icon" style="background:rgba(250,204,21,.1);color:var(--yellow)"><i
+                            class="fas fa-terminal"></i></div>
+                    <p><strong>sshpass</strong> installé sur le serveur WakeJS pour l'arrêt distant via SSH.</p>
+                </div>
+                <div class="prereq-item">
+                    <div class="prereq-icon" style="background:rgba(34,197,94,.1);color:var(--green)"><i
+                            class="fas fa-network-wired"></i></div>
+                    <p><strong>Accès réseau UDP port 9</strong> vers les machines cibles + <strong>Wake-on-LAN activé
+                            dans le BIOS</strong>.</p>
+                </div>
+                <div class="prereq-item">
+                    <div class="prereq-icon" style="background:rgba(129,140,248,.1);color:var(--indigo)"><i
+                            class="fas fa-server"></i></div>
+                    <p><strong>Accès LDAP au contrôleur de domaine AD</strong> et compte de service avec droits <code
+                            style="font-family:var(--mono);font-size:.85em">sudo shutdown</code>.</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre><span class="cmt"># 1. Cloner le dépôt</span>
+<span class="prompt">$</span> <span class="cmd">git clone https://github.com/cristianmeyers/wakejs.git</span>
+<span class="prompt">$</span> <span class="cmd">cd wakejs/backend</span>
+
+<span class="cmt"># 2. Installer les dépendances</span>
+<span class="prompt">$</span> <span class="cmd">npm install</span>
+
+<span class="cmt"># 3. Configurer (VLAN, AD, SSH)</span>
+<span class="prompt">$</span> <span class="cmd">nano backend/config/config.json</span>
+
+<span class="cmt"># 4. Lancer le serveur</span>
+<span class="prompt">$</span> <span class="cmd">bash scripts/wakejs.sh</span>
+
+<span class="cmt"># API disponible sur http://0.0.0.0:3000</span></pre>
+            </div>
+
+            <div style="margin-top:3.5rem;text-align:center">
+                <a href="https://github.com/cristianmeyers/wakejs" target="_blank" class="btn-primary"
+                    style="font-size:1rem;padding:1rem 2.5rem">
+                    <i class="fab fa-github" style="margin-right:.6rem"></i>Explorer le dépôt WakeJS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Cristian Meyers - BTS SIO SISR &nbsp;·&nbsp; Projet WakeJS
+    </footer>
+
+</body>
+
+</html>

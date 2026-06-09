@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migration ISC KEA – Cristian Meyers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg: #0b1120;
+            --surface: #111927;
+            --surface2: #19243a;
+            --border: #1e2d44;
+            --accent: #22d3ee;
+            /* cyan — réseau/protocole */
+            --accent2: #06b6d4;
+            --green: #4ade80;
+            --yellow: #fbbf24;
+            --red: #f87171;
+            --indigo: #818cf8;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(11, 17, 32, .9);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: .9rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--mono);
+            font-size: .85rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .nav-links a {
+            font-size: .875rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Moving data-flow lines */
+        .flow-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .flow-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, .25), transparent);
+            animation: flow 4s linear infinite;
+            width: 260px;
+        }
+
+        .flow-line:nth-child(1) {
+            top: 18%;
+            animation-delay: 0s;
+            left: -20%;
+        }
+
+        .flow-line:nth-child(2) {
+            top: 38%;
+            animation-delay: 1.2s;
+            left: -20%;
+        }
+
+        .flow-line:nth-child(3) {
+            top: 58%;
+            animation-delay: 2.4s;
+            left: -20%;
+        }
+
+        .flow-line:nth-child(4) {
+            top: 76%;
+            animation-delay: .6s;
+            left: -20%;
+        }
+
+        @keyframes flow {
+            from {
+                left: -30%
+            }
+
+            to {
+                left: 130%
+            }
+        }
+
+        .hero-badge {
+            font-family: var(--mono);
+            font-size: .72rem;
+            letter-spacing: .14em;
+            color: var(--accent);
+            border: 1px solid rgba(34, 211, 238, .28);
+            background: rgba(34, 211, 238, .06);
+            padding: .35rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 4.8rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 .old {
+            color: var(--muted);
+            text-decoration: line-through;
+            font-size: .72em;
+        }
+
+        .hero h1 .arrow {
+            color: var(--border);
+            font-size: .6em;
+            margin: 0 .3em;
+        }
+
+        .hero h1 .new {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.75;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0b1120;
+            font-weight: 700;
+            padding: .75rem 1.75rem;
+            border-radius: .75rem;
+            text-decoration: none;
+            transition: background .2s, transform .2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent2);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 600;
+            padding: .75rem 1.75rem;
+            border-radius: .75rem;
+            text-decoration: none;
+            background: var(--surface);
+            transition: border-color .2s, transform .2s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ── LAYOUT ── */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: .68rem;
+            letter-spacing: .18em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: .5rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.65rem, 3.5vw, 2.3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-sub {
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 640px;
+        }
+
+        /* ── CONTEXT CARD ── */
+        .context-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .context-card p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .context-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── SPECS GRID ── */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .spec-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: .875rem;
+            padding: 1.25rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            transition: border-color .2s;
+        }
+
+        .spec-card:hover {
+            border-color: var(--accent);
+        }
+
+        .spec-label {
+            font-family: var(--mono);
+            font-size: .68rem;
+            letter-spacing: .1em;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .spec-value {
+            font-family: var(--mono);
+            font-size: .92rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* ── PHASES (timeline) ── */
+        .phases {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 2.5rem;
+        }
+
+        .phase {
+            display: grid;
+            grid-template-columns: 2.5rem 1fr;
+            gap: 0 1.5rem;
+            position: relative;
+        }
+
+        /* vertical connector */
+        .phase:not(:last-child) .phase-dot::after {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            left: 1.15rem;
+            width: 2px;
+            height: calc(100% - 1rem);
+            background: var(--border);
+        }
+
+        .phase-dot {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            padding-top: .15rem;
+        }
+
+        .phase-dot-inner {
+            width: 2.3rem;
+            height: 2.3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            font-weight: 700;
+            z-index: 1;
+            flex-shrink: 0;
+            font-family: var(--mono);
+        }
+
+        .phase-body {
+            padding-bottom: 3rem;
+        }
+
+        .phase-body h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: .75rem;
+            margin-top: .3rem;
+        }
+
+        /* ── CODE BLOCKS ── */
+        .code-block {
+            background: #060d1c;
+            border: 1px solid var(--border);
+            border-radius: .875rem;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .6rem 1.1rem;
+            background: rgba(30, 45, 68, .6);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-filename {
+            font-family: var(--mono);
+            font-size: .75rem;
+            color: var(--muted);
+        }
+
+        .code-lang {
+            font-family: var(--mono);
+            font-size: .68rem;
+            color: var(--accent);
+            letter-spacing: .08em;
+        }
+
+        .code-block pre {
+            font-family: var(--mono);
+            font-size: .8rem;
+            color: var(--text);
+            line-height: 1.85;
+            padding: 1.25rem 1.5rem;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* syntax colours */
+        .kw {
+            color: #7dd3fc;
+        }
+
+        /* key */
+        .str {
+            color: #86efac;
+        }
+
+        /* string */
+        .num {
+            color: #fda4af;
+        }
+
+        /* number */
+        .cmt {
+            color: #334155;
+        }
+
+        /* comment */
+        .cmd-prompt {
+            color: var(--accent);
+        }
+
+        .cmd-text {
+            color: var(--text);
+        }
+
+        /* ── INLINE CMD ── */
+        .cmd-block {
+            background: #060d1c;
+            border: 1px solid var(--border);
+            border-radius: .875rem;
+            padding: 1.1rem 1.4rem;
+            margin-top: 1rem;
+            overflow-x: auto;
+        }
+
+        .cmd-block pre {
+            font-family: var(--mono);
+            font-size: .82rem;
+            line-height: 1.9;
+            white-space: pre;
+        }
+
+        /* ── RESOURCE CARDS ── */
+        .res-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.1rem;
+            margin-top: 2rem;
+        }
+
+        .res-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: .875rem;
+            padding: 1.25rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: .45rem;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .res-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .res-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: .45rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .85rem;
+            margin-bottom: .3rem;
+        }
+
+        .res-card h4 {
+            font-size: .9rem;
+            font-weight: 700;
+        }
+
+        .res-card p {
+            font-size: .825rem;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-logo" href="../index.html">← cristian.meyers</a>
+        <div class="nav-links">
+            <a href="#contexte">Contexte</a>
+            <a href="#specs">Specs</a>
+            <a href="#phases">Migration</a>
+            <a href="#ressources">Ressources</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="flow-bg">
+            <div class="flow-line"></div>
+            <div class="flow-line"></div>
+            <div class="flow-line"></div>
+            <div class="flow-line"></div>
+        </div>
+        <div style="position:relative;z-index:2">
+            <div class="hero-badge">// épreuve E5 · SISR · réseau</div>
+            <h1>
+                <span class="old">isc-dhcp-server</span>
+                <span class="arrow">→</span>
+                <span class="new">ISC KEA</span>
+            </h1>
+            <p>Migration du service DHCP vers la solution moderne ISC KEA — amélioration des performances,
+                maintenabilité accrue, API REST intégrée et documentation technique complète.</p>
+            <div class="hero-cta">
+                <a href="https://github.com/cristianmeyers/cyberenv/tree/main/Services/DHCP" target="_blank"
+                    class="btn-primary">
+                    <i class="fab fa-github" style="margin-right:.5rem"></i>Voir sur GitHub
+                </a>
+                <a href="#contexte" class="btn-outline">Lire la documentation</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEXTE -->
+    <section id="contexte">
+        <div class="container">
+            <div class="section-label">01 · contexte</div>
+            <h2 class="section-title">Pourquoi migrer vers KEA ?</h2>
+            <p class="section-sub">Dans le cadre de l'évolution du lab CyberEnv et de mon alternance à l'IUT
+                Brest-Morlaix, j'ai réalisé la migration du service DHCP traditionnel vers la solution moderne ISC KEA.
+            </p>
+
+            <div class="context-card">
+                <p><strong style="color:var(--text)">isc-dhcp-server</strong> est en fin de vie active. ISC KEA le
+                    remplace avec une architecture modulaire, une <strong style="color:var(--text)">API REST
+                        intégrée</strong> (Control Agent), une meilleure gestion des baux et une configuration JSON
+                    lisible.</p>
+                <p>Cette transition s'inscrit dans une démarche d'amélioration des performances, de la maintenabilité et
+                    de la scalabilité des services réseau du lab. Le résultat attendu est un service DHCP KEA pleinement
+                    opérationnel, avec gestion des pools d'adresses, réservations statiques, intégration VLANs et
+                    documentation complète.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- SPECS -->
+    <section id="specs">
+        <div class="container">
+            <div class="section-label">02 · spécifications réseau</div>
+            <h2 class="section-title">Serveur <code
+                    style="font-family:var(--mono);color:var(--accent);font-size:.85em">siodhcp</code></h2>
+            <p class="section-sub">Toutes les valeurs ci-dessous sont configurées dans Netplan et dans le fichier <code
+                    style="font-family:var(--mono);font-size:.9em">kea-dhcp4.conf</code>.</p>
+
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <span class="spec-label">Hostname</span>
+                    <span class="spec-value">siodhcp</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">IP Statique</span>
+                    <span class="spec-value">192.168.10.2</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">Passerelle</span>
+                    <span class="spec-value">192.168.10.254</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">DNS Primaire (AD)</span>
+                    <span class="spec-value">192.168.10.4</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">Domaine</span>
+                    <span class="spec-value">sio.lan</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">Pool DHCP</span>
+                    <span class="spec-value">.50 → .150</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">Subnet</span>
+                    <span class="spec-value">192.168.10.0/24</span>
+                </div>
+                <div class="spec-card">
+                    <span class="spec-label">OS</span>
+                    <span class="spec-value">Ubuntu Server 22.04</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- PHASES -->
+    <section id="phases">
+        <div class="container">
+            <div class="section-label">03 · procédure de migration</div>
+            <h2 class="section-title">Les 4 phases</h2>
+            <p class="section-sub">De la préparation système à la supervision des baux — chaque phase est documentée
+                avec les commandes et fichiers de configuration exacts.</p>
+
+            <div class="phases">
+
+                <!-- Phase 1 -->
+                <div class="phase">
+                    <div class="phase-dot">
+                        <div class="phase-dot-inner"
+                            style="background:rgba(34,211,238,.12);color:var(--accent);border:1px solid rgba(34,211,238,.3)">
+                            1</div>
+                    </div>
+                    <div class="phase-body">
+                        <h3><i class="fas fa-wrench"
+                                style="color:var(--accent);margin-right:.5rem;font-size:.9rem"></i>Préparation du
+                            système</h3>
+
+                        <p style="color:var(--muted);font-size:.9rem;margin-bottom:.75rem">Définition de l'identité de
+                            la VM et configuration de l'interface réseau via Netplan.</p>
+
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-filename">hostname</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><span class="cmd-prompt">$</span> <span class="cmd-text">sudo hostnamectl set-hostname siodhcp</span>
+<span class="cmd-prompt">$</span> <span class="cmd-text">exec bash</span></pre>
+                        </div>
+
+                        <div class="code-block" style="margin-top:.75rem">
+                            <div class="code-header">
+                                <span class="code-filename">/etc/netplan/00-config.yaml</span>
+                                <span class="code-lang">YAML</span>
+                            </div>
+                            <pre><span class="kw">network</span>:
+  <span class="kw">version</span>: <span class="num">2</span>
+  <span class="kw">ethernets</span>:
+    <span class="kw">ens18</span>:
+      <span class="kw">addresses</span>:
+        - <span class="str">192.168.10.2/24</span>
+      <span class="kw">routes</span>:
+        - <span class="kw">to</span>: <span class="str">default</span>
+          <span class="kw">via</span>: <span class="str">192.168.10.254</span>
+      <span class="kw">nameservers</span>:
+        <span class="kw">addresses</span>: [<span class="str">192.168.10.4</span>, <span class="str">8.8.8.8</span>]
+        <span class="kw">search</span>: [<span class="str">sio.lan</span>]</pre>
+                        </div>
+                        <div class="cmd-block">
+                            <pre><span class="cmd-prompt">$</span> <span class="cmd-text">sudo netplan apply</span></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="phase">
+                    <div class="phase-dot">
+                        <div class="phase-dot-inner"
+                            style="background:rgba(74,222,128,.1);color:var(--green);border:1px solid rgba(74,222,128,.25)">
+                            2</div>
+                    </div>
+                    <div class="phase-body">
+                        <h3><i class="fas fa-box-open"
+                                style="color:var(--green);margin-right:.5rem;font-size:.9rem"></i>Installation et
+                            authentification</h3>
+                        <p style="color:var(--muted);font-size:.9rem;margin-bottom:.75rem">Installation des paquets KEA.
+                            Lors de l'installation, une interface bleue demande de configurer l'authentification du
+                            Control Agent — choisir <strong style="color:var(--text)">option 3
+                                (configured_password)</strong>.</p>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-filename">installation</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><span class="cmd-prompt">$</span> <span class="cmd-text">sudo apt update && sudo apt install -y kea-dhcp4-server kea-ctrl-agent</span>
+
+<span class="cmt"># Blue screen → option 3 : configured_password</span>
+<span class="cmt"># Mot de passe : sioPBA29200</span></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="phase">
+                    <div class="phase-dot">
+                        <div class="phase-dot-inner"
+                            style="background:rgba(251,191,36,.1);color:var(--yellow);border:1px solid rgba(251,191,36,.25)">
+                            3</div>
+                    </div>
+                    <div class="phase-body">
+                        <h3><i class="fas fa-cog"
+                                style="color:var(--yellow);margin-right:.5rem;font-size:.9rem"></i>Configuration des
+                            services</h3>
+                        <p style="color:var(--muted);font-size:.9rem;margin-bottom:.75rem">Deux fichiers JSON à
+                            configurer : le Control Agent (API sécurisée) et le moteur DHCPv4 (distribution des
+                            adresses).</p>
+
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-filename">/etc/kea/kea-ctrl-agent.conf</span>
+                                <span class="code-lang">JSON</span>
+                            </div>
+                            <pre>{
+  <span class="kw">"Control-agent"</span>: {
+    <span class="kw">"http-host"</span>: <span class="str">"127.0.0.1"</span>,
+    <span class="kw">"http-port"</span>: <span class="num">8000</span>,
+    <span class="kw">"authentication"</span>: {
+      <span class="kw">"type"</span>: <span class="str">"basic"</span>,
+      <span class="kw">"clients"</span>: [
+        { <span class="kw">"user"</span>: <span class="str">"kea-api"</span>, <span class="kw">"password"</span>: <span class="str">"sioPBA29200"</span> }
+      ]
+    },
+    <span class="kw">"control-sockets"</span>: {
+      <span class="kw">"dhcp4"</span>: {
+        <span class="kw">"socket-type"</span>: <span class="str">"unix"</span>,
+        <span class="kw">"socket-name"</span>: <span class="str">"/run/kea/kea-dhcp4-ctrl.sock"</span>
+      }
+    }
+  }
+}</pre>
+                        </div>
+
+                        <div class="code-block" style="margin-top:.75rem">
+                            <div class="code-header">
+                                <span class="code-filename">/etc/kea/kea-dhcp4.conf</span>
+                                <span class="code-lang">JSON</span>
+                            </div>
+                            <pre>{
+  <span class="kw">"Dhcp4"</span>: {
+    <span class="kw">"interfaces-config"</span>: { <span class="kw">"interfaces"</span>: [<span class="str">"ens18"</span>] },
+    <span class="kw">"lease-database"</span>: {
+      <span class="kw">"type"</span>: <span class="str">"memfile"</span>, <span class="kw">"persist"</span>: <span class="num">true</span>,
+      <span class="kw">"name"</span>: <span class="str">"/var/lib/kea/kea-leases4.csv"</span>,
+      <span class="kw">"lfc-interval"</span>: <span class="num">3600</span>
+    },
+    <span class="kw">"subnet4"</span>: [
+      {
+        <span class="kw">"id"</span>: <span class="num">1</span>,
+        <span class="kw">"subnet"</span>: <span class="str">"192.168.10.0/24"</span>,
+        <span class="kw">"pools"</span>: [{ <span class="kw">"pool"</span>: <span class="str">"192.168.10.50 - 192.168.10.150"</span> }],
+        <span class="kw">"option-data"</span>: [
+          { <span class="kw">"name"</span>: <span class="str">"routers"</span>,            <span class="kw">"data"</span>: <span class="str">"192.168.10.1"</span>  },
+          { <span class="kw">"name"</span>: <span class="str">"domain-name-servers"</span>, <span class="kw">"data"</span>: <span class="str">"192.168.10.4"</span>  },
+          { <span class="kw">"name"</span>: <span class="str">"domain-name"</span>,         <span class="kw">"data"</span>: <span class="str">"sio.lan"</span>       }
+        ]
+      }
+    ],
+    <span class="kw">"loggers"</span>: [
+      {
+        <span class="kw">"name"</span>: <span class="str">"kea-dhcp4"</span>,
+        <span class="kw">"output_options"</span>: [{ <span class="kw">"output"</span>: <span class="str">"/var/log/kea-dhcp4.log"</span> }],
+        <span class="kw">"severity"</span>: <span class="str">"INFO"</span>
+      }
+    ]
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="phase">
+                    <div class="phase-dot">
+                        <div class="phase-dot-inner"
+                            style="background:rgba(129,140,248,.1);color:var(--indigo);border:1px solid rgba(129,140,248,.25)">
+                            4</div>
+                    </div>
+                    <div class="phase-body">
+                        <h3><i class="fas fa-rocket"
+                                style="color:var(--indigo);margin-right:.5rem;font-size:.9rem"></i>Activation et
+                            monitoring</h3>
+                        <p style="color:var(--muted);font-size:.9rem;margin-bottom:.75rem">Démarrage des services,
+                            activation au boot, puis surveillance des baux en temps réel.</p>
+
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-filename">démarrage des services</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><span class="cmt"># Créer et attribuer le fichier de logs</span>
+<span class="cmd-prompt">$</span> <span class="cmd-text">sudo touch /var/log/kea-dhcp4.log</span>
+<span class="cmd-prompt">$</span> <span class="cmd-text">sudo chown _kea:_kea /var/log/kea-dhcp4.log</span>
+
+<span class="cmt"># Redémarrer et activer au boot</span>
+<span class="cmd-prompt">$</span> <span class="cmd-text">sudo systemctl restart kea-ctrl-agent kea-dhcp4-server</span>
+<span class="cmd-prompt">$</span> <span class="cmd-text">sudo systemctl enable kea-ctrl-agent kea-dhcp4-server</span></pre>
+                        </div>
+
+                        <div class="code-block" style="margin-top:.75rem">
+                            <div class="code-header">
+                                <span class="code-filename">surveillance</span>
+                                <span class="code-lang">BASH</span>
+                            </div>
+                            <pre><span class="cmt"># Logs en temps réel (ex: requêtes Windows)</span>
+<span class="cmd-prompt">$</span> <span class="cmd-text">sudo tail -f /var/log/kea-dhcp4.log</span>
+
+<span class="cmt"># Liste des baux actifs</span>
+<span class="cmd-prompt">$</span> <span class="cmd-text">cat /var/lib/kea/kea-leases4.csv</span></pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /phases -->
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- RESSOURCES -->
+    <section id="ressources">
+        <div class="container">
+            <div class="section-label">04 · ressources utilisées</div>
+            <h2 class="section-title">Matériels & documentations</h2>
+            <p class="section-sub">Ressources mobilisées pour planifier, réaliser et documenter la migration.</p>
+
+            <div class="res-grid">
+                <div class="res-card">
+                    <div class="res-icon" style="background:rgba(34,211,238,.1);color:var(--accent)"><i
+                            class="fas fa-server"></i></div>
+                    <h4>Ubuntu Server 22.04</h4>
+                    <p>VM Proxmox dédiée — serveur de production du lab CyberEnv.</p>
+                </div>
+                <div class="res-card">
+                    <div class="res-icon" style="background:rgba(74,222,128,.1);color:var(--green)"><i
+                            class="fas fa-network-wired"></i></div>
+                    <h4>Switch Cisco</h4>
+                    <p>Gestion des VLANs et accès réseau aux plages DHCP en production.</p>
+                </div>
+                <div class="res-card">
+                    <div class="res-icon" style="background:rgba(251,191,36,.1);color:var(--yellow)"><i
+                            class="fas fa-terminal"></i></div>
+                    <h4>Scripts Bash</h4>
+                    <p>Scripts de migration développés en Bash. Accès SSH au serveur de production.</p>
+                </div>
+                <div class="res-card">
+                    <div class="res-icon" style="background:rgba(129,140,248,.1);color:var(--indigo)"><i
+                            class="fas fa-book"></i></div>
+                    <h4>Documentation ISC KEA</h4>
+                    <p>Documentation officielle ISC KEA DHCP + wiki interne Wiki.js de l'IUT.</p>
+                </div>
+                <div class="res-card">
+                    <div class="res-icon" style="background:rgba(34,211,238,.1);color:var(--accent)"><i
+                            class="fas fa-globe"></i></div>
+                    <h4>Protocoles utilisés</h4>
+                    <p>DHCP IPv4, VLANs, DNS, SSH, HTTP REST (KEA Control Agent).</p>
+                </div>
+                <div class="res-card">
+                    <div class="res-icon" style="background:rgba(248,113,113,.1);color:var(--red)"><i
+                            class="fas fa-tools"></i></div>
+                    <h4>Commandes Linux</h4>
+                    <p><code
+                            style="font-family:var(--mono);font-size:.82em">systemctl · journalctl · ip · ping · nmap · netplan</code>
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top:3.5rem;text-align:center">
+                <a href="https://github.com/cristianmeyers/cyberenv" target="_blank" class="btn-primary"
+                    style="font-size:1rem;padding:1rem 2.5rem">
+                    <i class="fab fa-github" style="margin-right:.6rem"></i>Voir le dépôt CyberEnv
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Cristian Meyers – BTS SIO SISR &nbsp;·&nbsp; Épreuve E5 · Migration ISC KEA
+    </footer>
+
+</body>
+
+</html>
